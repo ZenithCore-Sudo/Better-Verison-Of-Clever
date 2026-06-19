@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raider Portal · School Information</title>
+  <title>Raider Portal · animated tabs</title>
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
@@ -69,14 +69,19 @@
       letter-spacing: 0.3px;
     }
 
-    /* tab navigation */
-    .tab-bar {
-      display: flex;
-      gap: 0.5rem;
+    /* ---------- TAB BAR WITH ANIMATED INDICATOR ---------- */
+    .tab-bar-wrapper {
+      position: relative;
       margin-bottom: 2rem;
       border-bottom: 1px solid #262626;
       padding-bottom: 0.5rem;
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 0.5rem;
       flex-wrap: wrap;
+      position: relative;
     }
 
     .tab-btn {
@@ -95,11 +100,14 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      position: relative;
+      z-index: 2;
     }
 
     .tab-btn i {
       font-size: 1rem;
       color: #6a6aff;
+      transition: 0.3s;
     }
 
     .tab-btn:hover {
@@ -109,20 +117,38 @@
     }
 
     .tab-btn.active {
-      background: #1f1f3f;
       color: #f0f0ff;
-      border-color: #5a5aff;
-      box-shadow: 0 0 20px rgba(70, 70, 255, 0.15);
+      border-color: transparent;
+      background: transparent;
     }
 
     .tab-btn.active i {
       color: #b0b0ff;
     }
 
+    /* sliding indicator */
+    .tab-indicator {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      height: 3px;
+      border-radius: 4px;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      z-index: 1;
+      background: rgba(255, 60, 60, 0.5); /* 50% transparent red (default) */
+      box-shadow: 0 0 20px rgba(255, 60, 60, 0.2);
+      width: 0;
+    }
+
+    .tab-indicator.orange {
+      background: rgba(255, 165, 0, 0.5); /* 50% transparent orange */
+      box-shadow: 0 0 20px rgba(255, 165, 0, 0.2);
+    }
+
     /* panels */
     .panel {
       display: none;
-      animation: fade 0.25s ease;
+      animation: fade 0.3s ease;
     }
 
     .panel.active {
@@ -130,8 +156,8 @@
     }
 
     @keyframes fade {
-      0% { opacity: 0.3; }
-      100% { opacity: 1; }
+      0% { opacity: 0.3; transform: translateY(6px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     /* ---------- SCHOOL INFO PANEL ---------- */
@@ -244,7 +270,7 @@
       border: 1px solid #2f2f5a;
     }
 
-    /* app grid (apps panel) */
+    /* app grid */
     .app-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -366,10 +392,14 @@
     </div>
   </header>
 
-  <!-- TABS -->
-  <div class="tab-bar">
-    <button class="tab-btn active" data-tab="apps"><i class="fas fa-th"></i> Apps</button>
-    <button class="tab-btn" data-tab="school"><i class="fas fa-school"></i> School Information</button>
+  <!-- TAB BAR with animated indicator -->
+  <div class="tab-bar-wrapper">
+    <div class="tab-bar" id="tabBar">
+      <button class="tab-btn active" data-tab="apps"><i class="fas fa-th"></i> Student Portal</button>
+      <button class="tab-btn" data-tab="school"><i class="fas fa-school"></i> School Information</button>
+      <!-- sliding indicator -->
+      <div class="tab-indicator" id="tabIndicator"></div>
+    </div>
   </div>
 
   <!-- ===== PANEL 1: APPS ===== -->
@@ -547,7 +577,7 @@
         <div class="info-row"><span class="label">Principal</span><span class="value">Mr. Dave Frey</span></div>
         <div class="info-row"><span class="label">Phone</span><span class="value"><a href="tel:7179483333">717-948-3333</a></span></div>
         <div class="info-row"><span class="label">Email</span><span class="value"><a href="mailto:dfrey@raiderweb.org">dfrey@raiderweb.org</a></span></div>
-        <div class="info-row"><span class="label">Asst. Principal</span><span class="value">Mr. Paul Roman</span></div>
+        <div class="info-row"><span class="label">Assistant Principal</span><span class="value">Mr. Paul Roman</span></div>
         <div class="info-row"><span class="label">Phone</span><span class="value"><a href="tel:7179483333">717-948-3333</a></span></div>
         <div class="info-row"><span class="label">Email</span><span class="value"><a href="mailto:proman@raiderweb.org">proman@raiderweb.org</a></span></div>
       </div>
@@ -570,7 +600,7 @@
           </tbody>
         </table>
         <div style="margin-top: 1.2rem; color: #6a6a6a; font-size: 0.8rem; border-top: 1px solid #1e1e1e; padding-top: 0.8rem;">
-          <i class="fas fa-info-circle" style="color:#5a5aff;"></i> Total school days: 180
+          <i class="fas fa-info-circle" style="color:#5a5aff;"></i> Total School Days: 180
         </div>
       </div>
 
@@ -579,28 +609,53 @@
 
   <!-- footer -->
   <footer class="portal-footer">
-    <span><i class="fas fa-mouse-pointer" style="margin-right: 6px;"></i> Click Any Card · All Your Student Tools</span>
+    <span><i class="fas fa-mouse-pointer" style="margin-right: 6px;"></i> Click On Any Card · All Your Student tools</span>
   </footer>
 
 </div>
 
-<!-- simple tab switching -->
+<!-- TAB SWITCHING WITH ANIMATED INDICATOR -->
 <script>
   (function() {
     const tabs = document.querySelectorAll('.tab-btn');
+    const indicator = document.getElementById('tabIndicator');
+    const tabBar = document.getElementById('tabBar');
     const panels = {
       apps: document.getElementById('panel-apps'),
       school: document.getElementById('panel-school')
     };
 
+    function updateIndicator(activeTab) {
+      // get position and width of the active tab
+      const rect = activeTab.getBoundingClientRect();
+      const barRect = tabBar.getBoundingClientRect();
+      
+      // calculate relative position
+      const left = rect.left - barRect.left;
+      const width = rect.width;
+      
+      indicator.style.left = left + 'px';
+      indicator.style.width = width + 'px';
+    }
+
     function setActiveTab(tabId) {
       // update buttons
+      let activeTab = null;
       tabs.forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.tab === tabId) {
           btn.classList.add('active');
+          activeTab = btn;
         }
       });
+
+      // update indicator color
+      if (tabId === 'apps') {
+        indicator.classList.remove('orange');
+      } else if (tabId === 'school') {
+        indicator.classList.add('orange');
+      }
+
       // update panels
       Object.keys(panels).forEach(key => {
         panels[key].classList.remove('active');
@@ -608,8 +663,16 @@
       if (panels[tabId]) {
         panels[tabId].classList.add('active');
       }
+
+      // update indicator position after panel change (slight delay for layout settle)
+      if (activeTab) {
+        requestAnimationFrame(() => {
+          updateIndicator(activeTab);
+        });
+      }
     }
 
+    // click handlers
     tabs.forEach(btn => {
       btn.addEventListener('click', function(e) {
         const tab = this.dataset.tab;
@@ -617,8 +680,30 @@
       });
     });
 
-    // default: apps active
-    setActiveTab('apps');
+    // initial setup: set indicator for "Apps" (active by default)
+    window.addEventListener('load', function() {
+      const activeTab = document.querySelector('.tab-btn.active');
+      if (activeTab) {
+        // ensure indicator is red (default)
+        indicator.classList.remove('orange');
+        updateIndicator(activeTab);
+      }
+    });
+
+    // also update on resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const activeTab = document.querySelector('.tab-btn.active');
+        if (activeTab) {
+          updateIndicator(activeTab);
+        }
+      }, 100);
+    });
+
+    // Expose setActiveTab globally if needed (optional)
+    window.setActiveTab = setActiveTab;
   })();
 </script>
 
