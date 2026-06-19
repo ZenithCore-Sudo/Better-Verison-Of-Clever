@@ -1,394 +1,626 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Raider Portal · black dashboard</title>
-    <!-- Font Awesome 6 (free) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raider Portal · School Information</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    }
 
-        body {
-            background-color: #0b0b0b;
-            background: radial-gradient(circle at 20% 30%, #1a1a1a, #000000);
-            min-height: 100vh;
-            padding: 2rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    body {
+      background-color: #0b0b0b;
+      background: radial-gradient(circle at 20% 30%, #1a1a1a, #000000);
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .portal-wrapper {
-            max-width: 1400px;
-            width: 100%;
-        }
+    .portal-wrapper {
+      max-width: 1400px;
+      width: 100%;
+    }
 
-        /* header */
-        .portal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            margin-bottom: 2.8rem;
-            border-bottom: 1px solid #2a2a2a;
-            padding-bottom: 1.2rem;
-        }
+    /* header */
+    .portal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #2a2a2a;
+      padding-bottom: 1rem;
+    }
 
-        .portal-header h1 {
-            color: #f0f0f0;
-            font-weight: 400;
-            font-size: 2.3rem;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    .portal-header h1 {
+      color: #f0f0f0;
+      font-weight: 400;
+      font-size: 2.3rem;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .portal-header h1 i {
-            color: #7c7cff;
-            font-size: 2rem;
-            background: #1e1e1e;
-            padding: 8px 12px;
-            border-radius: 40px;
-            box-shadow: 0 0 12px rgba(100, 100, 255, 0.15);
-        }
+    .portal-header h1 i {
+      color: #7c7cff;
+      font-size: 2rem;
+      background: #1e1e1e;
+      padding: 8px 12px;
+      border-radius: 40px;
+      box-shadow: 0 0 12px rgba(100, 100, 255, 0.15);
+    }
 
-        .portal-header .sub {
-            color: #888;
-            font-size: 0.95rem;
-            background: #1a1a1a;
-            padding: 6px 18px;
-            border-radius: 30px;
-            border: 1px solid #2c2c2c;
-            letter-spacing: 0.3px;
-        }
+    .portal-header .sub {
+      color: #888;
+      font-size: 0.95rem;
+      background: #1a1a1a;
+      padding: 6px 18px;
+      border-radius: 30px;
+      border: 1px solid #2c2c2c;
+      letter-spacing: 0.3px;
+    }
 
-        /* grid – cards */
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-            gap: 1.5rem;
-        }
+    /* tab navigation */
+    .tab-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #262626;
+      padding-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
 
-        .app-card {
-            background: #131313;
-            border: 1px solid #282828;
-            border-radius: 24px;
-            padding: 1.4rem 0.8rem 1.2rem 0.8rem;
-            text-align: center;
-            transition: all 0.2s ease;
-            box-shadow: 0 8px 0 rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(2px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 140px;
-            cursor: pointer;
-            text-decoration: none;
-            color: #dddddd;
-        }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: #888;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.6rem 1.8rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.2s;
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .app-card:hover {
-            background: #1f1f1f;
-            border-color: #4a4aff;
-            transform: translateY(-6px);
-            box-shadow: 0 14px 0 #0a0a0a, 0 0 20px rgba(70, 70, 255, 0.2);
-        }
+    .tab-btn i {
+      font-size: 1rem;
+      color: #6a6aff;
+    }
 
-        .app-card:active {
-            transform: translateY(2px);
-            box-shadow: 0 4px 0 #0a0a0a;
-        }
+    .tab-btn:hover {
+      background: #222;
+      color: #ddd;
+      border-color: #4a4aff;
+    }
 
-        .app-card i {
-            font-size: 2.4rem;
-            margin-bottom: 10px;
-            color: #b0b0ff;
-            transition: 0.2s;
-            background: #222;
-            padding: 12px;
-            border-radius: 60px;
-            width: 68px;
-            height: 68px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .tab-btn.active {
+      background: #1f1f3f;
+      color: #f0f0ff;
+      border-color: #5a5aff;
+      box-shadow: 0 0 20px rgba(70, 70, 255, 0.15);
+    }
 
-        .app-card:hover i {
-            background: #2a2a4a;
-            color: #d0d0ff;
-        }
+    .tab-btn.active i {
+      color: #b0b0ff;
+    }
 
-        .app-name {
-            font-weight: 450;
-            font-size: 0.95rem;
-            letter-spacing: 0.2px;
-            color: #eaeaea;
-            margin-top: 4px;
-            line-height: 1.3;
-        }
+    /* panels */
+    .panel {
+      display: none;
+      animation: fade 0.25s ease;
+    }
 
-        .app-domain {
-            font-size: 0.65rem;
-            color: #6a6a6a;
-            margin-top: 6px;
-            background: #1e1e1e;
-            padding: 2px 12px;
-            border-radius: 40px;
-            border: 1px solid #2b2b2b;
-            max-width: 90%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+    .panel.active {
+      display: block;
+    }
 
-        .portal-footer {
-            margin-top: 3.5rem;
-            color: #3a3a3a;
-            font-size: 0.8rem;
-            text-align: center;
-            border-top: 1px solid #1e1e1e;
-            padding-top: 2rem;
-            width: 100%;
-            letter-spacing: 0.4px;
-        }
+    @keyframes fade {
+      0% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
 
-        .portal-footer span {
-            background: #111;
-            padding: 5px 18px;
-            border-radius: 40px;
-            border: 1px solid #252525;
-        }
+    /* ---------- SCHOOL INFO PANEL ---------- */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
 
-        @media (max-width: 600px) {
-            .portal-header h1 {
-                font-size: 1.8rem;
-            }
-            .app-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 1rem;
-            }
-            .app-card {
-                min-height: 120px;
-                padding: 1rem 0.5rem;
-            }
-            .app-card i {
-                width: 56px;
-                height: 56px;
-                font-size: 2rem;
-            }
-        }
-    </style>
+    @media (max-width: 800px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .info-card {
+      background: #121212;
+      border: 1px solid #282828;
+      border-radius: 28px;
+      padding: 1.8rem 1.8rem 2rem;
+      box-shadow: 0 8px 0 #0a0a0a;
+    }
+
+    .info-card h2 {
+      color: #c0c0ff;
+      font-weight: 400;
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #2a2a2a;
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-card h2 i {
+      color: #7c7cff;
+      font-size: 1.3rem;
+      width: 2rem;
+    }
+
+    .info-row {
+      display: flex;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #1e1e1e;
+      color: #d0d0d0;
+      font-size: 0.98rem;
+      align-items: baseline;
+    }
+
+    .info-row .label {
+      color: #8a8a8a;
+      min-width: 140px;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+    }
+
+    .info-row .value {
+      color: #eee;
+      font-weight: 400;
+      word-break: break-word;
+    }
+
+    .info-row .value a {
+      color: #8a8aff;
+      text-decoration: none;
+      border-bottom: 1px dotted #3a3a7a;
+    }
+
+    .info-row .value a:hover {
+      color: #bbbbff;
+      border-bottom: 1px solid #6a6aff;
+    }
+
+    /* term table */
+    .term-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.2rem;
+    }
+
+    .term-table th {
+      text-align: left;
+      color: #9a9aff;
+      font-weight: 400;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      padding: 0.5rem 0.2rem 0.3rem 0;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .term-table td {
+      padding: 0.7rem 0.2rem 0.7rem 0;
+      border-bottom: 1px solid #1e1e1e;
+      color: #ddd;
+    }
+
+    .term-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .term-table .days-badge {
+      background: #1f1f3a;
+      color: #b0b0ff;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      border: 1px solid #2f2f5a;
+    }
+
+    /* app grid (apps panel) */
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .app-card {
+      background: #131313;
+      border: 1px solid #282828;
+      border-radius: 24px;
+      padding: 1.4rem 0.8rem 1.2rem;
+      text-align: center;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 0 rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 140px;
+      text-decoration: none;
+      color: #dddddd;
+    }
+
+    .app-card:hover {
+      background: #1f1f1f;
+      border-color: #4a4aff;
+      transform: translateY(-6px);
+      box-shadow: 0 14px 0 #0a0a0a, 0 0 20px rgba(70, 70, 255, 0.2);
+    }
+
+    .app-card:active {
+      transform: translateY(2px);
+      box-shadow: 0 4px 0 #0a0a0a;
+    }
+
+    .app-card i {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      color: #b0b0ff;
+      background: #222;
+      padding: 12px;
+      border-radius: 60px;
+      width: 68px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+    }
+
+    .app-card:hover i {
+      background: #2a2a4a;
+      color: #d0d0ff;
+    }
+
+    .app-name {
+      font-weight: 450;
+      font-size: 0.95rem;
+      color: #eaeaea;
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+
+    .app-domain {
+      font-size: 0.65rem;
+      color: #6a6a6a;
+      margin-top: 6px;
+      background: #1e1e1e;
+      padding: 2px 12px;
+      border-radius: 40px;
+      border: 1px solid #2b2b2b;
+      max-width: 90%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .portal-footer {
+      margin-top: 3.5rem;
+      color: #3a3a3a;
+      font-size: 0.8rem;
+      text-align: center;
+      border-top: 1px solid #1e1e1e;
+      padding-top: 2rem;
+      width: 100%;
+      letter-spacing: 0.4px;
+    }
+
+    .portal-footer span {
+      background: #111;
+      padding: 5px 18px;
+      border-radius: 40px;
+      border: 1px solid #252525;
+    }
+
+    @media (max-width: 600px) {
+      .portal-header h1 { font-size: 1.8rem; }
+      .app-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+      .app-card { min-height: 120px; padding: 1rem 0.5rem; }
+      .app-card i { width: 56px; height: 56px; font-size: 2rem; }
+      .tab-btn { padding: 0.4rem 1.2rem; font-size: 0.85rem; }
+      .info-row { flex-wrap: wrap; }
+      .info-row .label { min-width: 100px; }
+    }
+  </style>
 </head>
 <body>
 <div class="portal-wrapper">
 
-    <!-- header -->
-    <header class="portal-header">
-        <h1>
-            <i class="fas fa-graduation-cap"></i> 
-            Raider<span style="color:#7c7cff;">Hub</span>
-        </h1>
-        <div class="sub">
-            <i class="fas fa-circle" style="color:#5f5; font-size: 0.5rem; margin-right: 6px;"></i> 
-            MASD · Student Portal
-        </div>
-    </header>
+  <!-- header -->
+  <header class="portal-header">
+    <h1>
+      <i class="fas fa-graduation-cap"></i>
+      Raider<span style="color:#7c7cff;">Hub</span>
+    </h1>
+    <div class="sub">
+      <i class="fas fa-circle" style="color:#5f5; font-size: 0.5rem; margin-right: 6px;"></i>
+      MAHS · Student Portal
+    </div>
+  </header>
 
-    <!-- app grid: all links -->
+  <!-- TABS -->
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="apps"><i class="fas fa-th"></i> Apps</button>
+    <button class="tab-btn" data-tab="school"><i class="fas fa-school"></i> School Information</button>
+  </div>
+
+  <!-- ===== PANEL 1: APPS ===== -->
+  <div id="panel-apps" class="panel active">
     <div class="app-grid">
 
-        <!-- Canvas -->
-        <a href="https://middletownsd.instructure.com" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-chalkboard-teacher"></i>
-            <span class="app-name">Canvas</span>
-            <span class="app-domain">instructure</span>
-        </a>
-
-        <!-- Clever -->
-        <a href="https://clever.com/in/masd/student/portal" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-robot"></i>
-            <span class="app-name">Clever</span>
-            <span class="app-domain">clever.com/masd</span>
-        </a>
-
-        <!-- RaiderWeb -->
-        <a href="https://www.raiderweb.org/home" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-globe"></i>
-            <span class="app-name">RaiderWeb</span>
-            <span class="app-domain">raiderweb.org</span>
-        </a>
-
-        <!-- Care Solace -->
-        <a href="https://caresolace.com/site/middletownarea" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-heart"></i>
-            <span class="app-name">Care Solace</span>
-            <span class="app-domain">caresolace</span>
-        </a>
-
-        <!-- FitnessGram -->
-        <a href="https://myhealthyzone.fitnessgram.net" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-dumbbell"></i>
-            <span class="app-name">FitnessGram</span>
-            <span class="app-domain">myhealthyzone</span>
-        </a>
-
-        <!-- YouTube -->
-        <a href="https://www.youtube.com/user/MAHSAnnouncements?app=desktop" target="_blank" rel="noopener" class="app-card">
-            <i class="fab fa-youtube"></i>
-            <span class="app-name">MAHS Announce</span>
-            <span class="app-domain">YouTube</span>
-        </a>
-
-        <!-- Naviance -->
-        <a href="https://id.naviance.com" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-bullseye"></i>
-            <span class="app-name">Naviance</span>
-            <span class="app-domain">id.naviance</span>
-        </a>
-
-        <!-- Destiny -->
-        <a href="http://destiny.raiderweb.org" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-book-open"></i>
-            <span class="app-name">Destiny</span>
-            <span class="app-domain">destiny.raiderweb</span>
-        </a>
-
-        <!-- PowerSchool -->
-        <a href="https://powerschool.raiderweb.org/public/" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-chart-line"></i>
-            <span class="app-name">PowerSchool</span>
-            <span class="app-domain">powerschool</span>
-        </a>
-
-        <!-- Safe2Say -->
-        <a href="https://www.safe2saypa.org" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-shield-alt"></i>
-            <span class="app-name">Safe2Say PA</span>
-            <span class="app-domain">safe2saypa</span>
-        </a>
-
-        <!-- LinkIt! -->
-        <a href="https://raiderweb.linkit.com/student" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-link"></i>
-            <span class="app-name">LinkIt! Student</span>
-            <span class="app-domain">raiderweb.linkit</span>
-        </a>
-
-        <!-- Securly Pass -->
-        <a href="https://pass.securly.com/passes/create" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-passport"></i>
-            <span class="app-name">Securly Pass</span>
-            <span class="app-domain">pass.securly</span>
-        </a>
-
-        <!-- Amplify -->
-        <a href="https://learning.amplify.com/home/student/" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-wave-square"></i>
-            <span class="app-name">Amplify</span>
-            <span class="app-domain">learning.amplify</span>
-        </a>
-
-        <!-- IXL -->
-        <a href="https://www.ixl.com/dashboard" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-calculator"></i>
-            <span class="app-name">IXL</span>
-            <span class="app-domain">ixl.com</span>
-        </a>
-
-        <!-- PBIS Rewards -->
-        <a href="https://pbisr.navigate360.com/login.php" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-star"></i>
-            <span class="app-name">PBIS Rewards</span>
-            <span class="app-domain">navigate360</span>
-        </a>
-
-        <!-- Discovery Education -->
-        <a href="https://clever.discoveryeducation.com/learn/explore" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-rocket"></i>
-            <span class="app-name">Discovery Ed</span>
-            <span class="app-domain">clever.discovery</span>
-        </a>
-
-        <!-- MasteryConnect -->
-        <a href="https://app.masteryconnect.com/student/home" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-check-double"></i>
-            <span class="app-name">MasteryConnect</span>
-            <span class="app-domain">masteryconnect</span>
-        </a>
-
-        <!-- McGraw-Hill -->
-        <a href="https://connected.mcgraw-hill.com/connected/ssoep.lti.do" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-book"></i>
-            <span class="app-name">McGraw-Hill</span>
-            <span class="app-domain">mcgraw-hill</span>
-        </a>
-
-        <!-- FastBridge -->
-        <a href="https://auth.fastbridge.org/login.do?errorCode=13" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-tachometer-alt"></i>
-            <span class="app-name">FastBridge</span>
-            <span class="app-domain">auth.fastbridge</span>
-        </a>
-
-        <!-- Scholastic -->
-        <a href="https://idp-awsprod1.education.scholastic.com/idp/" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-graduation-cap"></i>
-            <span class="app-name">Scholastic</span>
-            <span class="app-domain">scholastic.com</span>
-        </a>
-
-        <!-- Hazing Reporting (RaiderWeb) -->
-        <a href="https://www.raiderweb.org/student_services/hazing_reporting" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-flag"></i>
-            <span class="app-name">Hazing Reporting</span>
-            <span class="app-domain">raiderweb.org</span>
-        </a>
-
-        <!-- Quill -->
-        <a href="https://www.quill.org/classes" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-feather-alt"></i>
-            <span class="app-name">Quill</span>
-            <span class="app-domain">quill.org/classes</span>
-        </a>
-
-        <!-- Edpuzzle -->
-        <a href="https://edpuzzle.com/classes/675714d5cf66573c6e2facb6" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-puzzle-piece"></i>
-            <span class="app-name">Edpuzzle</span>
-            <span class="app-domain">edpuzzle.com</span>
-        </a>
-
-        <!-- Google Drive -->
-        <a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener" class="app-card">
-            <i class="fab fa-google-drive"></i>
-            <span class="app-name">Google Drive</span>
-            <span class="app-domain">drive.google.com</span>
-        </a>
-
-        <!-- Gmail -->
-        <a href="https://mail.google.com/mail/u/0/" target="_blank" rel="noopener" class="app-card">
-            <i class="fas fa-envelope"></i>
-            <span class="app-name">Gmail</span>
-            <span class="app-domain">mail.google.com</span>
-        </a>
+      <!-- Canvas -->
+      <a href="https://middletownsd.instructure.com" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <span class="app-name">Canvas</span>
+        <span class="app-domain">instructure</span>
+      </a>
+      <!-- Clever -->
+      <a href="https://clever.com/in/masd/student/portal" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-robot"></i>
+        <span class="app-name">Clever</span>
+        <span class="app-domain">clever.com/masd</span>
+      </a>
+      <!-- RaiderWeb -->
+      <a href="https://www.raiderweb.org/home" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-globe"></i>
+        <span class="app-name">RaiderWeb</span>
+        <span class="app-domain">raiderweb.org</span>
+      </a>
+      <!-- Care Solace -->
+      <a href="https://caresolace.com/site/middletownarea" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-heart"></i>
+        <span class="app-name">Care Solace</span>
+        <span class="app-domain">caresolace</span>
+      </a>
+      <!-- FitnessGram -->
+      <a href="https://myhealthyzone.fitnessgram.net" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-dumbbell"></i>
+        <span class="app-name">FitnessGram</span>
+        <span class="app-domain">myhealthyzone</span>
+      </a>
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/user/MAHSAnnouncements?app=desktop" target="_blank" rel="noopener" class="app-card">
+        <i class="fab fa-youtube"></i>
+        <span class="app-name">MAHS Announce</span>
+        <span class="app-domain">YouTube</span>
+      </a>
+      <!-- Naviance -->
+      <a href="https://id.naviance.com" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-bullseye"></i>
+        <span class="app-name">Naviance</span>
+        <span class="app-domain">id.naviance</span>
+      </a>
+      <!-- Destiny -->
+      <a href="http://destiny.raiderweb.org" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-book-open"></i>
+        <span class="app-name">Destiny</span>
+        <span class="app-domain">destiny.raiderweb</span>
+      </a>
+      <!-- PowerSchool -->
+      <a href="https://powerschool.raiderweb.org/public/" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-chart-line"></i>
+        <span class="app-name">PowerSchool</span>
+        <span class="app-domain">powerschool</span>
+      </a>
+      <!-- Safe2Say -->
+      <a href="https://www.safe2saypa.org" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-shield-alt"></i>
+        <span class="app-name">Safe2Say PA</span>
+        <span class="app-domain">safe2saypa</span>
+      </a>
+      <!-- LinkIt! -->
+      <a href="https://raiderweb.linkit.com/student" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-link"></i>
+        <span class="app-name">LinkIt! Student</span>
+        <span class="app-domain">raiderweb.linkit</span>
+      </a>
+      <!-- Securly Pass -->
+      <a href="https://pass.securly.com/passes/create" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-passport"></i>
+        <span class="app-name">Securly Pass</span>
+        <span class="app-domain">pass.securly</span>
+      </a>
+      <!-- Amplify -->
+      <a href="https://learning.amplify.com/home/student/" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-wave-square"></i>
+        <span class="app-name">Amplify</span>
+        <span class="app-domain">learning.amplify</span>
+      </a>
+      <!-- IXL -->
+      <a href="https://www.ixl.com/dashboard" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-calculator"></i>
+        <span class="app-name">IXL</span>
+        <span class="app-domain">ixl.com</span>
+      </a>
+      <!-- PBIS Rewards -->
+      <a href="https://pbisr.navigate360.com/login.php" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-star"></i>
+        <span class="app-name">PBIS Rewards</span>
+        <span class="app-domain">navigate360</span>
+      </a>
+      <!-- Discovery Ed -->
+      <a href="https://clever.discoveryeducation.com/learn/explore" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-rocket"></i>
+        <span class="app-name">Discovery Ed</span>
+        <span class="app-domain">clever.discovery</span>
+      </a>
+      <!-- MasteryConnect -->
+      <a href="https://app.masteryconnect.com/student/home" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-check-double"></i>
+        <span class="app-name">MasteryConnect</span>
+        <span class="app-domain">masteryconnect</span>
+      </a>
+      <!-- McGraw-Hill -->
+      <a href="https://connected.mcgraw-hill.com/connected/ssoep.lti.do" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-book"></i>
+        <span class="app-name">McGraw-Hill</span>
+        <span class="app-domain">mcgraw-hill</span>
+      </a>
+      <!-- FastBridge -->
+      <a href="https://auth.fastbridge.org/login.do?errorCode=13" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-tachometer-alt"></i>
+        <span class="app-name">FastBridge</span>
+        <span class="app-domain">auth.fastbridge</span>
+      </a>
+      <!-- Scholastic -->
+      <a href="https://idp-awsprod1.education.scholastic.com/idp/" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-graduation-cap"></i>
+        <span class="app-name">Scholastic</span>
+        <span class="app-domain">scholastic.com</span>
+      </a>
+      <!-- Hazing Reporting -->
+      <a href="https://www.raiderweb.org/student_services/hazing_reporting" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-flag"></i>
+        <span class="app-name">Hazing Reporting</span>
+        <span class="app-domain">raiderweb.org</span>
+      </a>
+      <!-- Quill -->
+      <a href="https://www.quill.org/classes" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-feather-alt"></i>
+        <span class="app-name">Quill</span>
+        <span class="app-domain">quill.org/classes</span>
+      </a>
+      <!-- Edpuzzle -->
+      <a href="https://edpuzzle.com/classes/675714d5cf66573c6e2facb6" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-puzzle-piece"></i>
+        <span class="app-name">Edpuzzle</span>
+        <span class="app-domain">edpuzzle.com</span>
+      </a>
+      <!-- Google Drive -->
+      <a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener" class="app-card">
+        <i class="fab fa-google-drive"></i>
+        <span class="app-name">Google Drive</span>
+        <span class="app-domain">drive.google.com</span>
+      </a>
+      <!-- Gmail -->
+      <a href="https://mail.google.com/mail/u/0/" target="_blank" rel="noopener" class="app-card">
+        <i class="fas fa-envelope"></i>
+        <span class="app-name">Gmail</span>
+        <span class="app-domain">mail.google.com</span>
+      </a>
 
     </div>
+  </div>
 
-    <!-- footer -->
-    <footer class="portal-footer">
-        <span><i class="fas fa-mouse-pointer" style="margin-right: 6px;"></i> Click Any Card · All Your Tools</span>
-    </footer>
+  <!-- ===== PANEL 2: SCHOOL INFO ===== -->
+  <div id="panel-school" class="panel">
+    <div class="info-grid">
+
+      <!-- left: school details -->
+      <div class="info-card">
+        <h2><i class="fas fa-address-card"></i> School Information</h2>
+        <div class="info-row"><span class="label">School Name</span><span class="value">Middletown Area High School</span></div>
+        <div class="info-row"><span class="label">Address</span><span class="value">1155 North Union St, Middletown, PA 17057</span></div>
+        <div class="info-row"><span class="label">Phone</span><span class="value"><a href="tel:7179483333">717-948-3333</a></span></div>
+        <div class="info-row"><span class="label">Fax</span><span class="value">717-948-3359</span></div>
+        <div class="info-row" style="border-bottom: 1px solid #2a2a2a; padding-bottom: 0.8rem; margin-bottom: 0.8rem;"></div>
+
+        <h2 style="margin-top: 0.5rem; font-size:1.2rem;"><i class="fas fa-user-tie"></i> Administration</h2>
+        <div class="info-row"><span class="label">Principal</span><span class="value">Mr. Dave Frey</span></div>
+        <div class="info-row"><span class="label">Phone</span><span class="value"><a href="tel:7179483333">717-948-3333</a></span></div>
+        <div class="info-row"><span class="label">Email</span><span class="value"><a href="mailto:dfrey@raiderweb.org">dfrey@raiderweb.org</a></span></div>
+        <div class="info-row"><span class="label">Asst. Principal</span><span class="value">Mr. Paul Roman</span></div>
+        <div class="info-row"><span class="label">Phone</span><span class="value"><a href="tel:7179483333">717-948-3333</a></span></div>
+        <div class="info-row"><span class="label">Email</span><span class="value"><a href="mailto:proman@raiderweb.org">proman@raiderweb.org</a></span></div>
+      </div>
+
+      <!-- right: terms -->
+      <div class="info-card">
+        <h2><i class="fas fa-calendar-alt"></i> 2025–2026 Terms</h2>
+        <table class="term-table">
+          <thead>
+            <tr><th>Term</th><th>Start</th><th>End</th><th>Days</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>2025-2026</td><td>08/21/2025</td><td>06/04/2026</td><td><span class="days-badge">180</span></td></tr>
+            <tr><td>Semester 1</td><td>08/21/2025</td><td>01/20/2026</td><td><span class="days-badge">90</span></td></tr>
+            <tr><td>Semester 2</td><td>01/21/2026</td><td>06/04/2026</td><td><span class="days-badge">90</span></td></tr>
+            <tr><td>Quarter 1</td><td>08/21/2025</td><td>10/28/2025</td><td><span class="days-badge">45</span></td></tr>
+            <tr><td>Quarter 2</td><td>10/29/2025</td><td>01/20/2026</td><td><span class="days-badge">45</span></td></tr>
+            <tr><td>Quarter 3</td><td>01/21/2026</td><td>03/27/2026</td><td><span class="days-badge">45</span></td></tr>
+            <tr><td>Quarter 4</td><td>03/30/2026</td><td>06/04/2026</td><td><span class="days-badge">45</span></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top: 1.2rem; color: #6a6a6a; font-size: 0.8rem; border-top: 1px solid #1e1e1e; padding-top: 0.8rem;">
+          <i class="fas fa-info-circle" style="color:#5a5aff;"></i> Total school days: 180
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="portal-footer">
+    <span><i class="fas fa-mouse-pointer" style="margin-right: 6px;"></i> Click Any Card · All Your Student Tools</span>
+  </footer>
 
 </div>
+
+<!-- simple tab switching -->
+<script>
+  (function() {
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panels = {
+      apps: document.getElementById('panel-apps'),
+      school: document.getElementById('panel-school')
+    };
+
+    function setActiveTab(tabId) {
+      // update buttons
+      tabs.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.tab === tabId) {
+          btn.classList.add('active');
+        }
+      });
+      // update panels
+      Object.keys(panels).forEach(key => {
+        panels[key].classList.remove('active');
+      });
+      if (panels[tabId]) {
+        panels[tabId].classList.add('active');
+      }
+    }
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const tab = this.dataset.tab;
+        if (tab) setActiveTab(tab);
+      });
+    });
+
+    // default: apps active
+    setActiveTab('apps');
+  })();
+</script>
+
 </body>
 </html>
-```
