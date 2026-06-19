@@ -1,11 +1,13 @@
+Here's the updated HTML code for your student portal. I've added the new links (Scholastic, Hazing Reporting, Quill, Edpuzzle, Google Drive, and Gmail) to the dashboard, maintaining the clean black theme with clickable cards.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Raider Portal · black dashboard</title>
-    <!-- Font Awesome for clean icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         * {
             margin: 0;
@@ -29,7 +31,7 @@
             width: 100%;
         }
 
-        /* header / title */
+        /* header */
         .portal-header {
             display: flex;
             justify-content: space-between;
@@ -69,7 +71,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* grid — nice clickable cards */
+        /* grid – cards */
         .app-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
@@ -150,7 +152,6 @@
             text-overflow: ellipsis;
         }
 
-        /* footer */
         .portal-footer {
             margin-top: 3.5rem;
             color: #3a3a3a;
@@ -161,6 +162,7 @@
             width: 100%;
             letter-spacing: 0.4px;
         }
+
         .portal-footer span {
             background: #111;
             padding: 5px 18px;
@@ -168,7 +170,6 @@
             border: 1px solid #252525;
         }
 
-        /* extra responsive */
         @media (max-width: 600px) {
             .portal-header h1 {
                 font-size: 1.8rem;
@@ -204,23 +205,24 @@
         </div>
     </header>
 
-    <!-- app grid: all links as clickable cards -->
+    <!-- app grid: all links -->
     <div class="app-grid">
+
         <!-- Canvas -->
         <a href="https://middletownsd.instructure.com" target="_blank" rel="noopener" class="app-card">
             <i class="fas fa-chalkboard-teacher"></i>
             <span class="app-name">Canvas</span>
-            <span class="app-domain">middletownsd.instructure</span>
+            <span class="app-domain">instructure</span>
         </a>
 
-        <!-- Clever portal -->
+        <!-- Clever -->
         <a href="https://clever.com/in/masd/student/portal" target="_blank" rel="noopener" class="app-card">
             <i class="fas fa-robot"></i>
             <span class="app-name">Clever</span>
             <span class="app-domain">clever.com/masd</span>
         </a>
 
-        <!-- Raiderweb -->
+        <!-- RaiderWeb -->
         <a href="https://www.raiderweb.org/home" target="_blank" rel="noopener" class="app-card">
             <i class="fas fa-globe"></i>
             <span class="app-name">RaiderWeb</span>
@@ -231,7 +233,7 @@
         <a href="https://caresolace.com/site/middletownarea" target="_blank" rel="noopener" class="app-card">
             <i class="fas fa-heart"></i>
             <span class="app-name">Care Solace</span>
-            <span class="app-domain">caresolace.com</span>
+            <span class="app-domain">caresolace</span>
         </a>
 
         <!-- FitnessGram -->
@@ -241,7 +243,7 @@
             <span class="app-domain">myhealthyzone</span>
         </a>
 
-        <!-- YouTube announcements -->
+        <!-- YouTube -->
         <a href="https://www.youtube.com/user/MAHSAnnouncements?app=desktop" target="_blank" rel="noopener" class="app-card">
             <i class="fab fa-youtube"></i>
             <span class="app-name">MAHS Announce</span>
@@ -252,7 +254,7 @@
         <a href="https://id.naviance.com" target="_blank" rel="noopener" class="app-card">
             <i class="fas fa-bullseye"></i>
             <span class="app-name">Naviance</span>
-            <span class="app-domain">id.naviance.com</span>
+            <span class="app-domain">id.naviance</span>
         </a>
 
         <!-- Destiny -->
@@ -266,28 +268,28 @@
         <a href="https://powerschool.raiderweb.org/public/" target="_blank" rel="noopener" class="app-card">
             <i class="fas fa-chart-line"></i>
             <span class="app-name">PowerSchool</span>
-            <span class="app-domain">powerschool.raiderweb</span>
+            <span class="app-domain">powerschool</span>
         </a>
 
         <!-- Safe2Say -->
         <a href="https://www.safe2saypa.org" target="_blank" rel="noopener" class="app-card">
             <i class="fas fa-shield-alt"></i>
             <span class="app-name">Safe2Say PA</span>
-            <span class="app-domain">safe2saypa.org</span>
+            <span class="app-domain">safe2saypa</span>
         </a>
 
-        <!-- LinkIt! student -->
+        <!-- LinkIt! -->
         <a href="https://raiderweb.linkit.com/student" target="_blank" rel="noopener" class="app-card">
             <i class="fas fa-link"></i>
             <span class="app-name">LinkIt! Student</span>
             <span class="app-domain">raiderweb.linkit</span>
         </a>
 
-        <!-- Securly passes -->
+        <!-- Securly Pass -->
         <a href="https://pass.securly.com/passes/create" target="_blank" rel="noopener" class="app-card">
             <i class="fas fa-passport"></i>
             <span class="app-name">Securly Pass</span>
-            <span class="app-domain">pass.securly.com</span>
+            <span class="app-domain">pass.securly</span>
         </a>
 
         <!-- Amplify -->
@@ -301,7 +303,7 @@
         <a href="https://www.ixl.com/dashboard" target="_blank" rel="noopener" class="app-card">
             <i class="fas fa-calculator"></i>
             <span class="app-name">IXL</span>
-            <span class="app-domain">ixl.com/dashboard</span>
+            <span class="app-domain">ixl.com</span>
         </a>
 
         <!-- PBIS Rewards -->
@@ -329,7 +331,7 @@
         <a href="https://connected.mcgraw-hill.com/connected/ssoep.lti.do" target="_blank" rel="noopener" class="app-card">
             <i class="fas fa-book"></i>
             <span class="app-name">McGraw-Hill</span>
-            <span class="app-domain">connected.mcgraw</span>
+            <span class="app-domain">mcgraw-hill</span>
         </a>
 
         <!-- FastBridge -->
@@ -338,9 +340,54 @@
             <span class="app-name">FastBridge</span>
             <span class="app-domain">auth.fastbridge</span>
         </a>
+
+        <!-- ========== NEW APPS ========== -->
+
+        <!-- Scholastic -->
+        <a href="https://idp-awsprod1.education.scholastic.com/idp/" target="_blank" rel="noopener" class="app-card">
+            <i class="fas fa-graduation-cap"></i>
+            <span class="app-name">Scholastic</span>
+            <span class="app-domain">scholastic.com</span>
+        </a>
+
+        <!-- Hazing Reporting (RaiderWeb) -->
+        <a href="https://www.raiderweb.org/student_services/hazing_reporting" target="_blank" rel="noopener" class="app-card">
+            <i class="fas fa-flag"></i>
+            <span class="app-name">Hazing Reporting</span>
+            <span class="app-domain">raiderweb.org</span>
+        </a>
+
+        <!-- Quill -->
+        <a href="https://www.quill.org/classes" target="_blank" rel="noopener" class="app-card">
+            <i class="fas fa-feather-alt"></i>
+            <span class="app-name">Quill</span>
+            <span class="app-domain">quill.org/classes</span>
+        </a>
+
+        <!-- Edpuzzle -->
+        <a href="https://edpuzzle.com/classes/675714d5cf66573c6e2facb6" target="_blank" rel="noopener" class="app-card">
+            <i class="fas fa-puzzle-piece"></i>
+            <span class="app-name">Edpuzzle</span>
+            <span class="app-domain">edpuzzle.com</span>
+        </a>
+
+        <!-- Google Drive -->
+        <a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener" class="app-card">
+            <i class="fab fa-google-drive"></i>
+            <span class="app-name">Google Drive</span>
+            <span class="app-domain">drive.google.com</span>
+        </a>
+
+        <!-- Gmail -->
+        <a href="https://mail.google.com/mail/u/0/" target="_blank" rel="noopener" class="app-card">
+            <i class="fas fa-envelope"></i>
+            <span class="app-name">Gmail</span>
+            <span class="app-domain">mail.google.com</span>
+        </a>
+
     </div>
 
-    <!-- footer note -->
+    <!-- footer -->
     <footer class="portal-footer">
         <span><i class="fas fa-mouse-pointer" style="margin-right: 6px;"></i> click any card · all your tools</span>
     </footer>
@@ -348,3 +395,4 @@
 </div>
 </body>
 </html>
+```
