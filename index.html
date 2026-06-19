@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raider Portal · animated tabs</title>
+  <title>Raider Portal · course catalog</title>
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
@@ -126,7 +126,7 @@
       color: #b0b0ff;
     }
 
-    /* sliding indicator */
+    /* sliding indicator - colors per tab */
     .tab-indicator {
       position: absolute;
       bottom: -1px;
@@ -135,14 +135,19 @@
       border-radius: 4px;
       transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       z-index: 1;
-      background: rgba(255, 60, 60, 0.5); /* 50% transparent red (default) */
+      background: rgba(255, 60, 60, 0.5); /* red */
       box-shadow: 0 0 20px rgba(255, 60, 60, 0.2);
       width: 0;
     }
 
     .tab-indicator.orange {
-      background: rgba(255, 165, 0, 0.5); /* 50% transparent orange */
+      background: rgba(255, 165, 0, 0.5);
       box-shadow: 0 0 20px rgba(255, 165, 0, 0.2);
+    }
+
+    .tab-indicator.green {
+      background: rgba(0, 200, 80, 0.5);
+      box-shadow: 0 0 20px rgba(0, 200, 80, 0.2);
     }
 
     /* panels */
@@ -348,6 +353,185 @@
       text-overflow: ellipsis;
     }
 
+    /* ========== COURSE CATALOG PANEL ========== */
+    .course-catalog {
+      background: #121212;
+      border: 1px solid #282828;
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: 0 8px 0 #0a0a0a;
+    }
+
+    .course-catalog h2 {
+      color: #c0c0ff;
+      font-weight: 400;
+      font-size: 1.6rem;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #2a2a2a;
+      padding-bottom: 0.8rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .course-catalog h2 i {
+      color: #7c7cff;
+      font-size: 1.5rem;
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 700px) {
+      .course-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .course-list {
+      background: #0e0e0e;
+      border-radius: 18px;
+      border: 1px solid #222;
+      padding: 0.5rem 0;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+
+    .course-list::-webkit-scrollbar {
+      width: 5px;
+    }
+    .course-list::-webkit-scrollbar-track {
+      background: #1a1a1a;
+      border-radius: 10px;
+    }
+    .course-list::-webkit-scrollbar-thumb {
+      background: #3a3a6a;
+      border-radius: 10px;
+    }
+
+    .course-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 1.2rem;
+      border-bottom: 1px solid #1c1c1c;
+      color: #ddd;
+      font-size: 0.95rem;
+      transition: 0.15s;
+    }
+
+    .course-item:hover {
+      background: #1a1a2a;
+    }
+
+    .course-item .course-name {
+      flex: 1;
+    }
+
+    .course-item .course-number {
+      color: #7a7aff;
+      font-weight: 500;
+      background: #1a1a3a;
+      padding: 0.1rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      border: 1px solid #2a2a5a;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .course-numbers-side {
+      background: #0e0e0e;
+      border-radius: 18px;
+      border: 1px solid #222;
+      padding: 0.5rem 0;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+
+    .course-numbers-side::-webkit-scrollbar {
+      width: 5px;
+    }
+    .course-numbers-side::-webkit-scrollbar-track {
+      background: #1a1a1a;
+      border-radius: 10px;
+    }
+    .course-numbers-side::-webkit-scrollbar-thumb {
+      background: #3a3a6a;
+      border-radius: 10px;
+    }
+
+    .number-item {
+      padding: 0.7rem 1.2rem;
+      border-bottom: 1px solid #1c1c1c;
+      color: #b0b0ff;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    .number-item:hover {
+      background: #1a1a2a;
+    }
+
+    /* pagination arrows */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 1.8rem;
+      padding-top: 1rem;
+      border-top: 1px solid #222;
+    }
+
+    .page-arrow {
+      background: #1a1a2a;
+      border: 1px solid #333;
+      color: #b0b0ff;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page-arrow:hover {
+      background: #2a2a4a;
+      border-color: #5a5aff;
+      transform: scale(1.05);
+    }
+
+    .page-arrow:active {
+      transform: scale(0.92);
+    }
+
+    .page-info {
+      color: #888;
+      font-size: 0.95rem;
+      background: #1a1a1a;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      border: 1px solid #2a2a2a;
+      min-width: 100px;
+      text-align: center;
+    }
+
+    .page-info span {
+      color: #c0c0ff;
+      font-weight: 500;
+    }
+
     .portal-footer {
       margin-top: 3.5rem;
       color: #3a3a3a;
@@ -374,6 +558,7 @@
       .tab-btn { padding: 0.4rem 1.2rem; font-size: 0.85rem; }
       .info-row { flex-wrap: wrap; }
       .info-row .label { min-width: 100px; }
+      .course-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -397,6 +582,7 @@
     <div class="tab-bar" id="tabBar">
       <button class="tab-btn active" data-tab="apps"><i class="fas fa-th"></i> Student Portal</button>
       <button class="tab-btn" data-tab="school"><i class="fas fa-school"></i> School Information</button>
+      <button class="tab-btn" data-tab="courses"><i class="fas fa-book-open"></i> Course Catalog</button>
       <!-- sliding indicator -->
       <div class="tab-indicator" id="tabIndicator"></div>
     </div>
@@ -405,7 +591,6 @@
   <!-- ===== PANEL 1: APPS ===== -->
   <div id="panel-apps" class="panel active">
     <div class="app-grid">
-
       <!-- Canvas -->
       <a href="https://middletownsd.instructure.com" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-chalkboard-teacher"></i>
@@ -556,15 +741,12 @@
         <span class="app-name">Gmail</span>
         <span class="app-domain">mail.google.com</span>
       </a>
-
     </div>
   </div>
 
   <!-- ===== PANEL 2: SCHOOL INFO ===== -->
   <div id="panel-school" class="panel">
     <div class="info-grid">
-
-      <!-- left: school details -->
       <div class="info-card">
         <h2><i class="fas fa-address-card"></i> School Information</h2>
         <div class="info-row"><span class="label">School Name</span><span class="value">Middletown Area High School</span></div>
@@ -572,7 +754,6 @@
         <div class="info-row"><span class="label">Phone</span><span class="value"><a href="tel:7179483333">717-948-3333</a></span></div>
         <div class="info-row"><span class="label">Fax</span><span class="value">717-948-3359</span></div>
         <div class="info-row" style="border-bottom: 1px solid #2a2a2a; padding-bottom: 0.8rem; margin-bottom: 0.8rem;"></div>
-
         <h2 style="margin-top: 0.5rem; font-size:1.2rem;"><i class="fas fa-user-tie"></i> Administration</h2>
         <div class="info-row"><span class="label">Principal</span><span class="value">Mr. Dave Frey</span></div>
         <div class="info-row"><span class="label">Phone</span><span class="value"><a href="tel:7179483333">717-948-3333</a></span></div>
@@ -581,14 +762,10 @@
         <div class="info-row"><span class="label">Phone</span><span class="value"><a href="tel:7179483333">717-948-3333</a></span></div>
         <div class="info-row"><span class="label">Email</span><span class="value"><a href="mailto:proman@raiderweb.org">proman@raiderweb.org</a></span></div>
       </div>
-
-      <!-- right: terms -->
       <div class="info-card">
         <h2><i class="fas fa-calendar-alt"></i> 2025–2026 Terms</h2>
         <table class="term-table">
-          <thead>
-            <tr><th>Term</th><th>Start</th><th>End</th><th>Days</th></tr>
-          </thead>
+          <thead><tr><th>Term</th><th>Start</th><th>End</th><th>Days</th></tr></thead>
           <tbody>
             <tr><td>2025-2026</td><td>08/21/2025</td><td>06/04/2026</td><td><span class="days-badge">180</span></td></tr>
             <tr><td>Semester 1</td><td>08/21/2025</td><td>01/20/2026</td><td><span class="days-badge">90</span></td></tr>
@@ -603,7 +780,25 @@
           <i class="fas fa-info-circle" style="color:#5a5aff;"></i> Total School Days: 180
         </div>
       </div>
+    </div>
+  </div>
 
+  <!-- ===== PANEL 3: COURSE CATALOG ===== -->
+  <div id="panel-courses" class="panel">
+    <div class="course-catalog">
+      <h2><i class="fas fa-book-open"></i> Course Catalog</h2>
+      <div class="course-grid">
+        <!-- left: course names -->
+        <div class="course-list" id="courseList"></div>
+        <!-- right: course numbers -->
+        <div class="course-numbers-side" id="numberList"></div>
+      </div>
+      <!-- pagination -->
+      <div class="pagination">
+        <button class="page-arrow" id="prevPage"><i class="fas fa-chevron-left"></i></button>
+        <div class="page-info">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></div>
+        <button class="page-arrow" id="nextPage"><i class="fas fa-chevron-right"></i></button>
+      </div>
     </div>
   </div>
 
@@ -614,32 +809,31 @@
 
 </div>
 
-<!-- TAB SWITCHING WITH ANIMATED INDICATOR -->
+<!-- ============================================================ -->
+<!-- TAB SWITCHING + COURSE CATALOG PAGINATION                     -->
+<!-- ============================================================ -->
 <script>
   (function() {
+    // ---- TAB LOGIC ----
     const tabs = document.querySelectorAll('.tab-btn');
     const indicator = document.getElementById('tabIndicator');
     const tabBar = document.getElementById('tabBar');
     const panels = {
       apps: document.getElementById('panel-apps'),
-      school: document.getElementById('panel-school')
+      school: document.getElementById('panel-school'),
+      courses: document.getElementById('panel-courses')
     };
 
     function updateIndicator(activeTab) {
-      // get position and width of the active tab
       const rect = activeTab.getBoundingClientRect();
       const barRect = tabBar.getBoundingClientRect();
-      
-      // calculate relative position
       const left = rect.left - barRect.left;
       const width = rect.width;
-      
       indicator.style.left = left + 'px';
       indicator.style.width = width + 'px';
     }
 
     function setActiveTab(tabId) {
-      // update buttons
       let activeTab = null;
       tabs.forEach(btn => {
         btn.classList.remove('active');
@@ -650,10 +844,13 @@
       });
 
       // update indicator color
+      indicator.classList.remove('orange', 'green');
       if (tabId === 'apps') {
-        indicator.classList.remove('orange');
+        // red (default)
       } else if (tabId === 'school') {
         indicator.classList.add('orange');
+      } else if (tabId === 'courses') {
+        indicator.classList.add('green');
       }
 
       // update panels
@@ -664,7 +861,6 @@
         panels[tabId].classList.add('active');
       }
 
-      // update indicator position after panel change (slight delay for layout settle)
       if (activeTab) {
         requestAnimationFrame(() => {
           updateIndicator(activeTab);
@@ -672,38 +868,140 @@
       }
     }
 
-    // click handlers
     tabs.forEach(btn => {
-      btn.addEventListener('click', function(e) {
+      btn.addEventListener('click', function() {
         const tab = this.dataset.tab;
         if (tab) setActiveTab(tab);
       });
     });
 
-    // initial setup: set indicator for "Apps" (active by default)
     window.addEventListener('load', function() {
       const activeTab = document.querySelector('.tab-btn.active');
       if (activeTab) {
-        // ensure indicator is red (default)
-        indicator.classList.remove('orange');
+        indicator.classList.remove('orange', 'green');
         updateIndicator(activeTab);
       }
     });
 
-    // also update on resize
     let resizeTimer;
     window.addEventListener('resize', function() {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
         const activeTab = document.querySelector('.tab-btn.active');
-        if (activeTab) {
-          updateIndicator(activeTab);
-        }
+        if (activeTab) updateIndicator(activeTab);
       }, 100);
     });
 
-    // Expose setActiveTab globally if needed (optional)
-    window.setActiveTab = setActiveTab;
+    // ---- COURSE DATA ----
+    const rawCourses = [
+      "Honors U.S. History I 215", "Environmental Science 351", "Piano III 898",
+      "Honors Pre-Calc 424", "Radio Communications I 984", "Honors English II 125",
+      "French II 512", "AP Government 244", "AP Biology 348", "AP Computer Science 10012",
+      "Chorus 907", "Yearbook 190", "AP Calculus (BC) 2446", "Geometry 435",
+      "ESL - Math 451", "Internship 601", "Video Production & Animation I 10658",
+      "TV Production 613", "Intro to Coding 805", "Algebra II 420",
+      "R-English 3 563", "Radio Communications III 986", "Video Production & Animation II 10659",
+      "Honors World History 225", "Accounting 651", "Creative Writing - Story Writing 173",
+      "Geometry Theory & Structure 430", "Band 901", "AP Environmental Science 352",
+      "Criminal Justice 255", "AP Chemistry 343", "Spanish III 543",
+      "Health Science 937", "R-English 2 562", "Honors Geometry w/Trig 423",
+      "Lifetime Fitness 9544", "AP Language and Composition 146", "Forensics 336",
+      "Reading 557", "Interior Design I 747", "Band/Chorus 919",
+      "AP Literature and Composition 145", "Earth System Science 314", "Creative Living 742",
+      "AP U.S. History 235", "Physics I 340", "Ceramics and Pottery 873",
+      "World History 220", "Probability & Statistics 442", "Art I 855",
+      "Academic English II 120", "Honors Chemistry 330", "Spanish IV 544",
+      "Spanish I 541", "Health 9934", "21st Cent Skills/Entrepreneurship 605",
+      "Radio Communications II 985", "U.S. History I 211", "ESL Support 182",
+      "U.S. History II 231", "Pre-Calculus/Trigonometry 426", "Digital Photography Tech 798",
+      "Intro to Business 633", "Public Speaking 160", "Graphic Arts Tech III 799",
+      "Art II 856", "ESL English 181", "Personal Finance 612",
+      "STEM 427", "Study Hall 999", "Philosophy 268",
+      "Honors Algebra I 409", "AP Calculus (AB) 445", "Honors Algebra II 422",
+      "Radio Communications IV 987", "French I 511", "Spanish II 542",
+      "Sociology 252", "Sports & Entertainment Marketing 641", "Art IV 865",
+      "Arts and Crafts 866", "Anatomy and Physiology 939", "Academic English III 130",
+      "Honors English IV 144", "Adaptive Physical Educ 915", "Academic Biology 322",
+      "Algebra I 412", "Piano II 896", "Dramatic Arts 169",
+      "Honors U.S. History II 232", "Economics & Government 240", "Internship 602",
+      "Guitar I 883", "Mythology 170", "AP Psychology 203",
+      "R-English 1 561", "History of Rock & Roll 870", "Honors Biology 324",
+      "Guitar III 885", "Academic English IV 140", "AP Statistics 204",
+      "Academic Chemistry 332", "Intro to Materials & Manufacturing 789", "Zoology 335",
+      "Graphic Arts Tech I 792", "Art III 857", "Guitar II 895",
+      "Athletic Training 938", "Psychology 254", "Applied Math 9449",
+      "Academic English I 110", "Pre-Algebra 411", "French III 513",
+      "R-English 4 564", "Sectionals 901S", "AP Human Geography 236",
+      "Calculus 469", "Child Development 744", "Graphic Arts Tech II 793",
+      "Strength and Conditioning 941", "Sports and Games 955",
+      "Children's Literature and Story Telling 171", "Accounting II 652",
+      "Honors English I 115", "Abnormal Psychology 256", "Piano I 888",
+      "Honors English III 135"
+    ];
+
+    // Parse into objects { name, number }
+    const courses = rawCourses.map(str => {
+      const lastSpace = str.lastIndexOf(' ');
+      const name = str.substring(0, lastSpace).trim();
+      const number = str.substring(lastSpace + 1).trim();
+      return { name, number };
+    });
+
+    const PER_PAGE = 10;
+    let currentPage = 1;
+    const totalPages = Math.ceil(courses.length / PER_PAGE);
+
+    function renderPage(page) {
+      const start = (page - 1) * PER_PAGE;
+      const end = Math.min(start + PER_PAGE, courses.length);
+      const pageCourses = courses.slice(start, end);
+
+      // render course names
+      const courseList = document.getElementById('courseList');
+      courseList.innerHTML = '';
+      pageCourses.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'course-item';
+        div.innerHTML = `<span class="course-name">${c.name}</span><span class="course-number">${c.number}</span>`;
+        courseList.appendChild(div);
+      });
+
+      // render numbers only (right side)
+      const numberList = document.getElementById('numberList');
+      numberList.innerHTML = '';
+      pageCourses.forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'number-item';
+        div.textContent = c.number;
+        numberList.appendChild(div);
+      });
+
+      // update page info
+      document.getElementById('currentPage').textContent = page;
+      document.getElementById('totalPages').textContent = totalPages;
+    }
+
+    function goToPage(page) {
+      if (page < 1) page = 1;
+      if (page > totalPages) page = totalPages;
+      currentPage = page;
+      renderPage(currentPage);
+    }
+
+    document.getElementById('prevPage').addEventListener('click', () => {
+      goToPage(currentPage - 1);
+    });
+
+    document.getElementById('nextPage').addEventListener('click', () => {
+      goToPage(currentPage + 1);
+    });
+
+    // initial render
+    renderPage(1);
+
+    // expose for debugging
+    window.goToPage = goToPage;
+
   })();
 </script>
 
