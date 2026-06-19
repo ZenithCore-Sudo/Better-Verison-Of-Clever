@@ -150,11 +150,6 @@
       box-shadow: 0 0 20px rgba(0, 200, 80, 0.2);
     }
 
-    .tab-indicator.purple {
-      background: rgba(160, 80, 255, 0.5);
-      box-shadow: 0 0 20px rgba(160, 80, 255, 0.2);
-    }
-
     /* panels */
     .panel {
       display: none;
@@ -549,140 +544,6 @@
       font-weight: 500;
     }
 
-    /* ========== STUDENT RESOURCES PANEL ========== */
-    .resources-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    @media (max-width: 900px) {
-      .resources-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .resource-card {
-      background: #121212;
-      border: 1px solid #282828;
-      border-radius: 24px;
-      padding: 1.5rem;
-      box-shadow: 0 8px 0 #0a0a0a;
-    }
-
-    .resource-card h3 {
-      color: #c0c0ff;
-      font-weight: 400;
-      font-size: 1.2rem;
-      border-bottom: 1px solid #2a2a2a;
-      padding-bottom: 0.6rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .resource-card h3 i {
-      color: #7c7cff;
-      font-size: 1.1rem;
-      width: 1.8rem;
-    }
-
-    .schedule-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #1a1a1a;
-      color: #ddd;
-      font-size: 0.95rem;
-    }
-
-    .schedule-item .period {
-      color: #8a8a8a;
-    }
-
-    .schedule-item .time {
-      color: #b0b0ff;
-      font-weight: 500;
-    }
-
-    .event-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid #1a1a1a;
-      color: #ddd;
-      font-size: 0.95rem;
-    }
-
-    .event-item .event-date {
-      color: #7a7aff;
-      font-weight: 500;
-      min-width: 80px;
-      background: #1a1a3a;
-      padding: 0.1rem 0.6rem;
-      border-radius: 20px;
-      text-align: center;
-      font-size: 0.8rem;
-      border: 1px solid #2a2a5a;
-    }
-
-    .event-item .event-name {
-      flex: 1;
-    }
-
-    .quick-link-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.7rem;
-    }
-
-    .quick-link {
-      background: #1a1a2a;
-      border: 1px solid #2a2a3a;
-      border-radius: 16px;
-      padding: 0.8rem;
-      text-align: center;
-      text-decoration: none;
-      color: #ddd;
-      transition: 0.2s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
-    }
-
-    .quick-link i {
-      font-size: 1.6rem;
-      color: #7a7aff;
-    }
-
-    .quick-link:hover {
-      background: #2a2a4a;
-      border-color: #5a5aff;
-      transform: translateY(-3px);
-    }
-
-    .lunch-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #1a1a1a;
-      color: #ddd;
-      font-size: 0.95rem;
-    }
-
-    .lunch-item .day {
-      color: #8a8a8a;
-      font-weight: 500;
-    }
-
-    .lunch-item .menu {
-      color: #b0b0ff;
-    }
-
     .portal-footer {
       margin-top: 3.5rem;
       color: #3a3a3a;
@@ -710,8 +571,6 @@
       .info-row { flex-wrap: wrap; }
       .info-row .label { min-width: 100px; }
       .course-grid { grid-template-columns: 1fr; }
-      .resources-grid { grid-template-columns: 1fr; }
-      .quick-link-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -736,7 +595,6 @@
       <button class="tab-btn active" data-tab="apps"><i class="fas fa-th"></i> Student Portal</button>
       <button class="tab-btn" data-tab="school"><i class="fas fa-school"></i> School Info</button>
       <button class="tab-btn" data-tab="courses"><i class="fas fa-book-open"></i> Course Catalog</button>
-      <button class="tab-btn" data-tab="resources"><i class="fas fa-life-ring"></i> Resources</button>
       <!-- sliding indicator -->
       <div class="tab-indicator" id="tabIndicator"></div>
     </div>
@@ -896,48 +754,41 @@
         <span class="app-name">Gmail</span>
         <span class="app-domain">mail.google.com</span>
       </a>
-
-      <!-- ========== NEW APPS ADDED ========== -->
       <!-- Google Classroom -->
       <a href="https://classroom.google.com/u/3/?pli=1" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-chalkboard"></i>
         <span class="app-name">Google Classroom</span>
         <span class="app-domain">classroom.google.com</span>
       </a>
-
       <!-- Nearpod -->
       <a href="https://nearpod.com" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-presentation"></i>
         <span class="app-name">Nearpod</span>
         <span class="app-domain">nearpod.com</span>
       </a>
-
       <!-- Gimkit -->
       <a href="https://www.gimkit.com" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-gamepad"></i>
         <span class="app-name">Gimkit</span>
         <span class="app-domain">gimkit.com</span>
       </a>
-
       <!-- Kahoot -->
       <a href="https://kahoot.com" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-question-circle"></i>
         <span class="app-name">Kahoot</span>
         <span class="app-domain">kahoot.com</span>
       </a>
-
       <!-- Blooket -->
       <a href="https://www.blooket.com" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-dice"></i>
         <span class="app-name">Blooket</span>
         <span class="app-domain">blooket.com</span>
       </a>
-
       <!-- Easybridge -->
       <a href="https://easybridge-dashboard-web.savvaseasybridge.com/dashboard/student?ssoLogin=true" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-bridge"></i>
         <span class="app-name">Easybridge</span>
-        <span class="app-domain">savvaseasybridge.com</span>
+        <span class="app-domain">savvaseasybridge</span>
       </a>
 
     </div>
@@ -1009,79 +860,6 @@
     </div>
   </div>
 
-  <!-- ===== PANEL 4: RESOURCES ===== -->
-  <div id="panel-resources" class="panel">
-    <div class="resources-grid">
-
-      <!-- Bell Schedule -->
-      <div class="resource-card">
-        <h3><i class="fas fa-clock"></i> Bell Schedule</h3>
-        <div class="schedule-item"><span class="period">Period 1</span><span class="time">7:30 - 8:20</span></div>
-        <div class="schedule-item"><span class="period">Period 2</span><span class="time">8:25 - 9:15</span></div>
-        <div class="schedule-item"><span class="period">Period 3</span><span class="time">9:20 - 10:10</span></div>
-        <div class="schedule-item"><span class="period">Period 4</span><span class="time">10:15 - 11:05</span></div>
-        <div class="schedule-item"><span class="period">Lunch A</span><span class="time">11:05 - 11:35</span></div>
-        <div class="schedule-item"><span class="period">Period 5</span><span class="time">11:40 - 12:30</span></div>
-        <div class="schedule-item"><span class="period">Period 6</span><span class="time">12:35 - 1:25</span></div>
-        <div class="schedule-item"><span class="period">Period 7</span><span class="time">1:30 - 2:20</span></div>
-      </div>
-
-      <!-- Upcoming Events -->
-      <div class="resource-card">
-        <h3><i class="fas fa-calendar-check"></i> Upcoming Events</h3>
-        <div class="event-item"><span class="event-date">Oct 28</span><span class="event-name">End of Quarter 1</span></div>
-        <div class="event-item"><span class="event-date">Nov 3</span><span class="event-name">Parent-Teacher Conferences</span></div>
-        <div class="event-item"><span class="event-date">Nov 11</span><span class="event-name">Veterans Day - No School</span></div>
-        <div class="event-item"><span class="event-date">Nov 27-29</span><span class="event-name">Thanksgiving Break</span></div>
-        <div class="event-item"><span class="event-date">Dec 20</span><span class="event-name">Winter Break Begins</span></div>
-        <div class="event-item"><span class="event-date">Jan 6</span><span class="event-name">School Resumes</span></div>
-        <div class="event-item"><span class="event-date">Jan 20</span><span class="event-name">End of Semester 1</span></div>
-      </div>
-
-      <!-- Quick Links -->
-      <div class="resource-card">
-        <h3><i class="fas fa-link"></i> Quick Links</h3>
-        <div class="quick-link-grid">
-          <a href="https://www.raiderweb.org/counseling" target="_blank" class="quick-link">
-            <i class="fas fa-hand-holding-heart"></i> Counseling
-          </a>
-          <a href="https://www.raiderweb.org/tutoring" target="_blank" class="quick-link">
-            <i class="fas fa-graduation-cap"></i> Tutoring
-          </a>
-          <a href="https://www.raiderweb.org/library" target="_blank" class="quick-link">
-            <i class="fas fa-book"></i> Library
-          </a>
-          <a href="https://www.raiderweb.org/tech-support" target="_blank" class="quick-link">
-            <i class="fas fa-laptop"></i> Tech Support
-          </a>
-          <a href="https://www.raiderweb.org/clubs" target="_blank" class="quick-link">
-            <i class="fas fa-users"></i> Clubs
-          </a>
-          <a href="https://www.raiderweb.org/athletics" target="_blank" class="quick-link">
-            <i class="fas fa-running"></i> Athletics
-          </a>
-          <a href="https://www.raiderweb.org/college-career" target="_blank" class="quick-link">
-            <i class="fas fa-building-columns"></i> College & Career
-          </a>
-          <a href="https://www.raiderweb.org/student-services" target="_blank" class="quick-link">
-            <i class="fas fa-hands-helping"></i> Student Services
-          </a>
-        </div>
-      </div>
-
-      <!-- Lunch Menu -->
-      <div class="resource-card">
-        <h3><i class="fas fa-utensils"></i> This Week's Lunch</h3>
-        <div class="lunch-item"><span class="day">Monday</span><span class="menu">Chicken Tenders, Fries, Fruit</span></div>
-        <div class="lunch-item"><span class="day">Tuesday</span><span class="menu">Pizza, Salad, Veggie Sticks</span></div>
-        <div class="lunch-item"><span class="day">Wednesday</span><span class="menu">Taco Bar, Rice, Beans</span></div>
-        <div class="lunch-item"><span class="day">Thursday</span><span class="menu">Grilled Cheese, Tomato Soup, Apple</span></div>
-        <div class="lunch-item"><span class="day">Friday</span><span class="menu">Pasta Bar, Garlic Bread, Fruit</span></div>
-      </div>
-
-    </div>
-  </div>
-
   <!-- footer -->
   <footer class="portal-footer">
     <span><i class="fas fa-mouse-pointer" style="margin-right: 6px;"></i> Click On Any Card · All Your Student tools</span>
@@ -1101,8 +879,7 @@
     const panels = {
       apps: document.getElementById('panel-apps'),
       school: document.getElementById('panel-school'),
-      courses: document.getElementById('panel-courses'),
-      resources: document.getElementById('panel-resources')
+      courses: document.getElementById('panel-courses')
     };
 
     function updateIndicator(activeTab) {
@@ -1125,15 +902,13 @@
       });
 
       // update indicator color
-      indicator.classList.remove('orange', 'green', 'purple');
+      indicator.classList.remove('orange', 'green');
       if (tabId === 'apps') {
         // red (default)
       } else if (tabId === 'school') {
         indicator.classList.add('orange');
       } else if (tabId === 'courses') {
         indicator.classList.add('green');
-      } else if (tabId === 'resources') {
-        indicator.classList.add('purple');
       }
 
       // update panels
@@ -1161,7 +936,7 @@
     window.addEventListener('load', function() {
       const activeTab = document.querySelector('.tab-btn.active');
       if (activeTab) {
-        indicator.classList.remove('orange', 'green', 'purple');
+        indicator.classList.remove('orange', 'green');
         updateIndicator(activeTab);
       }
     });
