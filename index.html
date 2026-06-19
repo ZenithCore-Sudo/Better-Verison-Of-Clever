@@ -150,6 +150,11 @@
       box-shadow: 0 0 20px rgba(0, 200, 80, 0.2);
     }
 
+    .tab-indicator.purple {
+      background: rgba(160, 80, 255, 0.5);
+      box-shadow: 0 0 20px rgba(160, 80, 255, 0.2);
+    }
+
     /* panels */
     .panel {
       display: none;
@@ -544,6 +549,148 @@
       font-weight: 500;
     }
 
+    /* ========== COUNSELING PANEL ========== */
+    .counseling-panel {
+      background: #121212;
+      border: 1px solid #282828;
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: 0 8px 0 #0a0a0a;
+    }
+
+    .counseling-panel h2 {
+      color: #c0c0ff;
+      font-weight: 400;
+      font-size: 1.6rem;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #2a2a2a;
+      padding-bottom: 0.8rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .counseling-panel h2 i {
+      color: #7c7cff;
+      font-size: 1.5rem;
+    }
+
+    .counseling-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 800px) {
+      .counseling-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .counselor-card {
+      background: #0e0e0e;
+      border-radius: 18px;
+      border: 1px solid #222;
+      padding: 1.5rem;
+      transition: 0.2s;
+    }
+
+    .counselor-card:hover {
+      border-color: #4a4aff;
+    }
+
+    .counselor-card h3 {
+      color: #b0b0ff;
+      font-weight: 400;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .counselor-card .counselor-name {
+      color: #eee;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .counselor-card .counselor-detail {
+      color: #8a8a8a;
+      font-size: 0.9rem;
+      margin: 0.3rem 0;
+    }
+
+    .counselor-card .counselor-detail i {
+      width: 20px;
+      color: #7c7cff;
+    }
+
+    .counselor-card .counselor-detail a {
+      color: #8a8aff;
+      text-decoration: none;
+    }
+
+    .counselor-card .counselor-detail a:hover {
+      color: #bbbbff;
+      text-decoration: underline;
+    }
+
+    .counselor-card .btn-appt {
+      background: #2a2a4a;
+      border: 1px solid #4a4aff;
+      color: #b0b0ff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.85rem;
+      margin-top: 0.8rem;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .counselor-card .btn-appt:hover {
+      background: #3a3a6a;
+      transform: translateY(-2px);
+    }
+
+    .resources-section {
+      background: #0e0e0e;
+      border-radius: 18px;
+      border: 1px solid #222;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .resources-section h3 {
+      color: #b0b0ff;
+      font-weight: 400;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .resource-tag {
+      display: inline-block;
+      background: #1a1a2a;
+      border: 1px solid #2a2a3a;
+      border-radius: 30px;
+      padding: 0.3rem 1rem;
+      margin: 0.3rem 0.3rem 0.3rem 0;
+      color: #ddd;
+      font-size: 0.85rem;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+
+    .resource-tag:hover {
+      background: #2a2a4a;
+      border-color: #4a4aff;
+    }
+
+    .resource-tag i {
+      margin-right: 6px;
+      color: #7c7cff;
+    }
+
     .portal-footer {
       margin-top: 3.5rem;
       color: #3a3a3a;
@@ -571,6 +718,7 @@
       .info-row { flex-wrap: wrap; }
       .info-row .label { min-width: 100px; }
       .course-grid { grid-template-columns: 1fr; }
+      .counseling-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -595,6 +743,7 @@
       <button class="tab-btn active" data-tab="apps"><i class="fas fa-th"></i> Student Portal</button>
       <button class="tab-btn" data-tab="school"><i class="fas fa-school"></i> School Info</button>
       <button class="tab-btn" data-tab="courses"><i class="fas fa-book-open"></i> Course Catalog</button>
+      <button class="tab-btn" data-tab="counseling"><i class="fas fa-hand-holding-heart"></i> Counseling</button>
       <!-- sliding indicator -->
       <div class="tab-indicator" id="tabIndicator"></div>
     </div>
@@ -603,202 +752,167 @@
   <!-- ===== PANEL 1: APPS ===== -->
   <div id="panel-apps" class="panel active">
     <div class="app-grid">
-
-      <!-- Canvas -->
       <a href="https://middletownsd.instructure.com" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-chalkboard-teacher"></i>
         <span class="app-name">Canvas</span>
         <span class="app-domain">instructure</span>
       </a>
-      <!-- Clever -->
       <a href="https://clever.com/in/masd/student/portal" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-robot"></i>
         <span class="app-name">Clever</span>
         <span class="app-domain">clever.com/masd</span>
       </a>
-      <!-- RaiderWeb -->
       <a href="https://www.raiderweb.org/home" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-globe"></i>
         <span class="app-name">RaiderWeb</span>
         <span class="app-domain">raiderweb.org</span>
       </a>
-      <!-- Care Solace -->
       <a href="https://caresolace.com/site/middletownarea" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-heart"></i>
         <span class="app-name">Care Solace</span>
         <span class="app-domain">caresolace</span>
       </a>
-      <!-- FitnessGram -->
       <a href="https://myhealthyzone.fitnessgram.net" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-dumbbell"></i>
         <span class="app-name">FitnessGram</span>
         <span class="app-domain">myhealthyzone</span>
       </a>
-      <!-- YouTube -->
       <a href="https://www.youtube.com/user/MAHSAnnouncements?app=desktop" target="_blank" rel="noopener" class="app-card">
         <i class="fab fa-youtube"></i>
         <span class="app-name">MAHS Announce</span>
         <span class="app-domain">YouTube</span>
       </a>
-      <!-- Naviance -->
       <a href="https://id.naviance.com" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-bullseye"></i>
         <span class="app-name">Naviance</span>
         <span class="app-domain">id.naviance</span>
       </a>
-      <!-- Destiny -->
       <a href="http://destiny.raiderweb.org" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-book-open"></i>
         <span class="app-name">Destiny</span>
         <span class="app-domain">destiny.raiderweb</span>
       </a>
-      <!-- PowerSchool -->
       <a href="https://powerschool.raiderweb.org/public/" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-chart-line"></i>
         <span class="app-name">PowerSchool</span>
         <span class="app-domain">powerschool</span>
       </a>
-      <!-- Safe2Say -->
       <a href="https://www.safe2saypa.org" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-shield-alt"></i>
         <span class="app-name">Safe2Say PA</span>
         <span class="app-domain">safe2saypa</span>
       </a>
-      <!-- LinkIt! -->
       <a href="https://raiderweb.linkit.com/student" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-link"></i>
         <span class="app-name">LinkIt! Student</span>
         <span class="app-domain">raiderweb.linkit</span>
       </a>
-      <!-- Securly Pass -->
       <a href="https://pass.securly.com/passes/create" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-passport"></i>
         <span class="app-name">Securly Pass</span>
         <span class="app-domain">pass.securly</span>
       </a>
-      <!-- Amplify -->
       <a href="https://learning.amplify.com/home/student/" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-wave-square"></i>
         <span class="app-name">Amplify</span>
         <span class="app-domain">learning.amplify</span>
       </a>
-      <!-- IXL -->
       <a href="https://www.ixl.com/dashboard" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-calculator"></i>
         <span class="app-name">IXL</span>
         <span class="app-domain">ixl.com</span>
       </a>
-      <!-- PBIS Rewards -->
       <a href="https://pbisr.navigate360.com/login.php" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-star"></i>
         <span class="app-name">PBIS Rewards</span>
         <span class="app-domain">navigate360</span>
       </a>
-      <!-- Discovery Ed -->
       <a href="https://clever.discoveryeducation.com/learn/explore" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-rocket"></i>
         <span class="app-name">Discovery Ed</span>
         <span class="app-domain">clever.discovery</span>
       </a>
-      <!-- MasteryConnect -->
       <a href="https://app.masteryconnect.com/student/home" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-check-double"></i>
         <span class="app-name">MasteryConnect</span>
         <span class="app-domain">masteryconnect</span>
       </a>
-      <!-- McGraw-Hill -->
       <a href="https://connected.mcgraw-hill.com/connected/ssoep.lti.do" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-book"></i>
         <span class="app-name">McGraw-Hill</span>
         <span class="app-domain">mcgraw-hill</span>
       </a>
-      <!-- FastBridge -->
       <a href="https://auth.fastbridge.org/login.do?errorCode=13" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-tachometer-alt"></i>
         <span class="app-name">FastBridge</span>
         <span class="app-domain">auth.fastbridge</span>
       </a>
-      <!-- Scholastic -->
       <a href="https://idp-awsprod1.education.scholastic.com/idp/" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-graduation-cap"></i>
         <span class="app-name">Scholastic</span>
         <span class="app-domain">scholastic.com</span>
       </a>
-      <!-- Hazing Reporting -->
       <a href="https://www.raiderweb.org/student_services/hazing_reporting" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-flag"></i>
         <span class="app-name">Hazing Reporting</span>
         <span class="app-domain">raiderweb.org</span>
       </a>
-      <!-- Quill -->
       <a href="https://www.quill.org/classes" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-feather-alt"></i>
         <span class="app-name">Quill</span>
         <span class="app-domain">quill.org/classes</span>
       </a>
-      <!-- Edpuzzle -->
       <a href="https://edpuzzle.com/classes/675714d5cf66573c6e2facb6" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-puzzle-piece"></i>
         <span class="app-name">Edpuzzle</span>
         <span class="app-domain">edpuzzle.com</span>
       </a>
-      <!-- Google Drive -->
       <a href="https://drive.google.com/drive/my-drive" target="_blank" rel="noopener" class="app-card">
         <i class="fab fa-google-drive"></i>
         <span class="app-name">Google Drive</span>
         <span class="app-domain">drive.google.com</span>
       </a>
-      <!-- Gmail -->
       <a href="https://mail.google.com/mail/u/0/" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-envelope"></i>
         <span class="app-name">Gmail</span>
         <span class="app-domain">mail.google.com</span>
       </a>
-      <!-- Google Classroom -->
       <a href="https://classroom.google.com/u/3/?pli=1" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-chalkboard"></i>
         <span class="app-name">Google Classroom</span>
         <span class="app-domain">classroom.google.com</span>
       </a>
-      <!-- Nearpod -->
       <a href="https://nearpod.com" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-desktop"></i>
         <span class="app-name">Nearpod</span>
         <span class="app-domain">nearpod.com</span>
       </a>
-      <!-- Gimkit -->
       <a href="https://www.gimkit.com" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-gamepad"></i>
         <span class="app-name">Gimkit</span>
         <span class="app-domain">gimkit.com</span>
       </a>
-      <!-- Kahoot -->
       <a href="https://kahoot.com" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-trophy"></i>
         <span class="app-name">Kahoot</span>
         <span class="app-domain">kahoot.com</span>
       </a>
-      <!-- Blooket -->
       <a href="https://www.blooket.com" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-dice"></i>
         <span class="app-name">Blooket</span>
         <span class="app-domain">blooket.com</span>
       </a>
-      <!-- Easybridge -->
       <a href="https://easybridge-dashboard-web.savvaseasybridge.com/dashboard/student?ssoLogin=true" target="_blank" rel="noopener" class="app-card">
         <i class="fas fa-cloud-upload-alt"></i>
         <span class="app-name">Easybridge</span>
         <span class="app-domain">savvaseasybridge</span>
       </a>
-
     </div>
   </div>
 
   <!-- ===== PANEL 2: SCHOOL INFO ===== -->
   <div id="panel-school" class="panel">
     <div class="info-grid">
-
-      <!-- left: school details -->
       <div class="info-card">
         <h2><i class="fas fa-address-card"></i> School Information</h2>
         <div class="info-row"><span class="label">School Name</span><span class="value">Middletown Area High School</span></div>
@@ -806,7 +920,6 @@
         <div class="info-row"><span class="label">Phone</span><span class="value"><a href="tel:7179483333">717-948-3333</a></span></div>
         <div class="info-row"><span class="label">Fax</span><span class="value">717-948-3359</span></div>
         <div class="info-row" style="border-bottom: 1px solid #2a2a2a; padding-bottom: 0.8rem; margin-bottom: 0.8rem;"></div>
-
         <h2 style="margin-top: 0.5rem; font-size:1.2rem;"><i class="fas fa-user-tie"></i> Administration</h2>
         <div class="info-row"><span class="label">Principal</span><span class="value">Mr. Dave Frey</span></div>
         <div class="info-row"><span class="label">Phone</span><span class="value"><a href="tel:7179483333">717-948-3333</a></span></div>
@@ -815,14 +928,10 @@
         <div class="info-row"><span class="label">Phone</span><span class="value"><a href="tel:7179483333">717-948-3333</a></span></div>
         <div class="info-row"><span class="label">Email</span><span class="value"><a href="mailto:proman@raiderweb.org">proman@raiderweb.org</a></span></div>
       </div>
-
-      <!-- right: terms -->
       <div class="info-card">
         <h2><i class="fas fa-calendar-alt"></i> 2025–2026 Terms</h2>
         <table class="term-table">
-          <thead>
-            <tr><th>Term</th><th>Start</th><th>End</th><th>Days</th></tr>
-          </thead>
+          <thead><tr><th>Term</th><th>Start</th><th>End</th><th>Days</th></tr></thead>
           <tbody>
             <tr><td>2025-2026</td><td>08/21/2025</td><td>06/04/2026</td><td><span class="days-badge">180</span></td></tr>
             <tr><td>Semester 1</td><td>08/21/2025</td><td>01/20/2026</td><td><span class="days-badge">90</span></td></tr>
@@ -837,7 +946,6 @@
           <i class="fas fa-info-circle" style="color:#5a5aff;"></i> Total School Days: 180
         </div>
       </div>
-
     </div>
   </div>
 
@@ -846,16 +954,73 @@
     <div class="course-catalog">
       <h2><i class="fas fa-book-open"></i> Course Catalog</h2>
       <div class="course-grid">
-        <!-- left: course names -->
         <div class="course-list" id="courseList"></div>
-        <!-- right: course numbers -->
         <div class="course-numbers-side" id="numberList"></div>
       </div>
-      <!-- pagination -->
       <div class="pagination">
         <button class="page-arrow" id="prevPage"><i class="fas fa-chevron-left"></i></button>
         <div class="page-info">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></div>
         <button class="page-arrow" id="nextPage"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PANEL 4: COUNSELING ===== -->
+  <div id="panel-counseling" class="panel">
+    <div class="counseling-panel">
+      <h2><i class="fas fa-hand-holding-heart"></i> Counseling Services</h2>
+
+      <div class="counseling-grid">
+        <!-- Counselor 1 -->
+        <div class="counselor-card">
+          <h3><i class="fas fa-user-circle"></i> School Counselor</h3>
+          <div class="counselor-name">Mrs. Sarah Johnson</div>
+          <div class="counselor-detail"><i class="fas fa-users"></i> Students: A-K</div>
+          <div class="counselor-detail"><i class="fas fa-envelope"></i> <a href="mailto:sjohnson@raiderweb.org">sjohnson@raiderweb.org</a></div>
+          <div class="counselor-detail"><i class="fas fa-phone"></i> <a href="tel:7179483333">717-948-3333 ext. 5001</a></div>
+          <a href="#" class="btn-appt"><i class="fas fa-calendar-plus"></i> Schedule Appointment</a>
+        </div>
+
+        <!-- Counselor 2 -->
+        <div class="counselor-card">
+          <h3><i class="fas fa-user-circle"></i> School Counselor</h3>
+          <div class="counselor-name">Mr. Michael Chen</div>
+          <div class="counselor-detail"><i class="fas fa-users"></i> Students: L-Z</div>
+          <div class="counselor-detail"><i class="fas fa-envelope"></i> <a href="mailto:mchen@raiderweb.org">mchen@raiderweb.org</a></div>
+          <div class="counselor-detail"><i class="fas fa-phone"></i> <a href="tel:7179483333">717-948-3333 ext. 5002</a></div>
+          <a href="#" class="btn-appt"><i class="fas fa-calendar-plus"></i> Schedule Appointment</a>
+        </div>
+
+        <!-- Counselor 3 -->
+        <div class="counselor-card">
+          <h3><i class="fas fa-user-circle"></i> College & Career Counselor</h3>
+          <div class="counselor-name">Ms. Amanda Torres</div>
+          <div class="counselor-detail"><i class="fas fa-users"></i> All Students</div>
+          <div class="counselor-detail"><i class="fas fa-envelope"></i> <a href="mailto:atorres@raiderweb.org">atorres@raiderweb.org</a></div>
+          <div class="counselor-detail"><i class="fas fa-phone"></i> <a href="tel:7179483333">717-948-3333 ext. 5003</a></div>
+          <a href="#" class="btn-appt"><i class="fas fa-calendar-plus"></i> Schedule Appointment</a>
+        </div>
+
+        <!-- Counselor 4 -->
+        <div class="counselor-card">
+          <h3><i class="fas fa-user-circle"></i> Mental Health & Wellness</h3>
+          <div class="counselor-name">Dr. Lisa Park</div>
+          <div class="counselor-detail"><i class="fas fa-users"></i> All Students</div>
+          <div class="counselor-detail"><i class="fas fa-envelope"></i> <a href="mailto:lpark@raiderweb.org">lpark@raiderweb.org</a></div>
+          <div class="counselor-detail"><i class="fas fa-phone"></i> <a href="tel:7179483333">717-948-3333 ext. 5004</a></div>
+          <a href="#" class="btn-appt"><i class="fas fa-calendar-plus"></i> Schedule Appointment</a>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <div class="resources-section">
+        <h3><i class="fas fa-link"></i> Quick Resources</h3>
+        <a href="https://caresolace.com/site/middletownarea" target="_blank" class="resource-tag"><i class="fas fa-heart"></i> Care Solace</a>
+        <a href="https://www.safe2saypa.org" target="_blank" class="resource-tag"><i class="fas fa-shield-alt"></i> Safe2Say PA</a>
+        <a href="https://www.raiderweb.org/counseling" target="_blank" class="resource-tag"><i class="fas fa-hand-holding-heart"></i> Counseling Website</a>
+        <a href="https://www.raiderweb.org/student_services" target="_blank" class="resource-tag"><i class="fas fa-hands-helping"></i> Student Services</a>
+        <a href="https://www.raiderweb.org/college-career" target="_blank" class="resource-tag"><i class="fas fa-building-columns"></i> College & Career</a>
+        <a href="#" class="resource-tag"><i class="fas fa-phone"></i> Crisis Hotline: 988</a>
       </div>
     </div>
   </div>
@@ -868,7 +1033,7 @@
 </div>
 
 <!-- ============================================================ -->
-<!-- TAB SWITCHING + COURSE CATALOG PAGINATION                     -->
+<!-- JAVASCRIPT - TAB SWITCHING + COURSE CATALOG                  -->
 <!-- ============================================================ -->
 <script>
   (function() {
@@ -879,7 +1044,8 @@
     const panels = {
       apps: document.getElementById('panel-apps'),
       school: document.getElementById('panel-school'),
-      courses: document.getElementById('panel-courses')
+      courses: document.getElementById('panel-courses'),
+      counseling: document.getElementById('panel-counseling')
     };
 
     function updateIndicator(activeTab) {
@@ -901,17 +1067,17 @@
         }
       });
 
-      // update indicator color
-      indicator.classList.remove('orange', 'green');
+      indicator.classList.remove('orange', 'green', 'purple');
       if (tabId === 'apps') {
         // red (default)
       } else if (tabId === 'school') {
         indicator.classList.add('orange');
       } else if (tabId === 'courses') {
         indicator.classList.add('green');
+      } else if (tabId === 'counseling') {
+        indicator.classList.add('purple');
       }
 
-      // update panels
       Object.keys(panels).forEach(key => {
         panels[key].classList.remove('active');
       });
@@ -936,7 +1102,7 @@
     window.addEventListener('load', function() {
       const activeTab = document.querySelector('.tab-btn.active');
       if (activeTab) {
-        indicator.classList.remove('orange', 'green');
+        indicator.classList.remove('orange', 'green', 'purple');
         updateIndicator(activeTab);
       }
     });
@@ -950,7 +1116,7 @@
       }, 100);
     });
 
-    // ---- COURSE DATA - COMPLETE LIST ----
+    // ---- COURSE DATA ----
     const rawCourses = [
       "Honors U.S. History I 215", "Environmental Science 351", "Piano III 898",
       "Honors Pre-Calc 424", "Radio Communications I 984", "Honors English II 125",
@@ -997,7 +1163,6 @@
       "Honors English III 135"
     ];
 
-    // Parse into objects { name, number }
     const courses = rawCourses.map(str => {
       const lastSpace = str.lastIndexOf(' ');
       const name = str.substring(0, lastSpace).trim();
@@ -1014,7 +1179,6 @@
       const end = Math.min(start + PER_PAGE, courses.length);
       const pageCourses = courses.slice(start, end);
 
-      // render course names (left side)
       const courseList = document.getElementById('courseList');
       courseList.innerHTML = '';
       pageCourses.forEach(c => {
@@ -1024,7 +1188,6 @@
         courseList.appendChild(div);
       });
 
-      // render numbers only (right side)
       const numberList = document.getElementById('numberList');
       numberList.innerHTML = '';
       pageCourses.forEach(c => {
@@ -1034,11 +1197,8 @@
         numberList.appendChild(div);
       });
 
-      // update page info
       document.getElementById('currentPage').textContent = page;
       document.getElementById('totalPages').textContent = totalPages;
-
-      // update arrow states
       document.getElementById('prevPage').disabled = (page === 1);
       document.getElementById('nextPage').disabled = (page === totalPages);
     }
@@ -1058,11 +1218,10 @@
       goToPage(currentPage + 1);
     });
 
-    // initial render
     renderPage(1);
 
-    // expose for debugging
-    window.goToPage = goToPage;
+    // ---- EXPOSE SETACTIVETAB ----
+    window.setActiveTab = setActiveTab;
 
   })();
 </script>
