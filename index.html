@@ -147,9 +147,9 @@
       box-shadow: 0 0 20px rgba(0, 200, 80, 0.2);
     }
 
-    .tab-indicator.purple {
-      background: rgba(160, 80, 255, 0.5);
-      box-shadow: 0 0 20px rgba(160, 80, 255, 0.2);
+    .tab-indicator.blue {
+      background: rgba(50, 100, 255, 0.5);
+      box-shadow: 0 0 20px rgba(50, 100, 255, 0.2);
     }
 
     .panel {
@@ -350,7 +350,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    
+
     .course-catalog {
       background: #121212;
       border: 1px solid #282828;
@@ -624,25 +624,6 @@
       text-decoration: underline;
     }
 
-    .counselor-card .btn-appt {
-      background: #2a2a4a;
-      border: 1px solid #4a4aff;
-      color: #b0b0ff;
-      padding: 0.5rem 1.2rem;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: 0.2s;
-      font-size: 0.85rem;
-      margin-top: 0.8rem;
-      display: inline-block;
-      text-decoration: none;
-    }
-
-    .counselor-card .btn-appt:hover {
-      background: #3a3a6a;
-      transform: translateY(-2px);
-    }
-
     .resources-section {
       background: #0e0e0e;
       border-radius: 18px;
@@ -732,7 +713,6 @@
       <button class="tab-btn" data-tab="school"><i class="fas fa-school"></i> School Info</button>
       <button class="tab-btn" data-tab="courses"><i class="fas fa-book-open"></i> Course Catalog</button>
       <button class="tab-btn" data-tab="counseling"><i class="fas fa-hand-holding-heart"></i> Counseling</button>
-
       <div class="tab-indicator" id="tabIndicator"></div>
     </div>
   </div>
@@ -962,7 +942,6 @@
           <div class="counselor-detail"><i class="fas fa-users"></i> Students: A-K</div>
           <div class="counselor-detail"><i class="fas fa-envelope"></i> <a href="mailto:sjohnson@raiderweb.org">sjohnson@raiderweb.org</a></div>
           <div class="counselor-detail"><i class="fas fa-phone"></i> <a href="tel:7179483333">717-948-3333 ext. 5001</a></div>
-          <a href="#" class="btn-appt"><i class="fas fa-calendar-plus"></i> Schedule Appointment</a>
         </div>
 
         <div class="counselor-card">
@@ -971,7 +950,6 @@
           <div class="counselor-detail"><i class="fas fa-users"></i> Students: L-Z</div>
           <div class="counselor-detail"><i class="fas fa-envelope"></i> <a href="mailto:mchen@raiderweb.org">mchen@raiderweb.org</a></div>
           <div class="counselor-detail"><i class="fas fa-phone"></i> <a href="tel:7179483333">717-948-3333 ext. 5002</a></div>
-          <a href="#" class="btn-appt"><i class="fas fa-calendar-plus"></i> Schedule Appointment</a>
         </div>
         
         <div class="counselor-card">
@@ -980,7 +958,6 @@
           <div class="counselor-detail"><i class="fas fa-users"></i> All Students</div>
           <div class="counselor-detail"><i class="fas fa-envelope"></i> <a href="mailto:lpark@raiderweb.org">lpark@raiderweb.org</a></div>
           <div class="counselor-detail"><i class="fas fa-phone"></i> <a href="tel:7179483333">717-948-3333 ext. 5004</a></div>
-          <a href="#" class="btn-appt"><i class="fas fa-calendar-plus"></i> Schedule Appointment</a>
         </div>
       </div>
 
@@ -1032,15 +1009,15 @@
         }
       });
 
-      indicator.classList.remove('orange', 'green', 'purple');
+      indicator.classList.remove('orange', 'green', 'blue');
       if (tabId === 'apps') {
-
+        // red default
       } else if (tabId === 'school') {
         indicator.classList.add('orange');
       } else if (tabId === 'courses') {
         indicator.classList.add('green');
       } else if (tabId === 'counseling') {
-        indicator.classList.add('purple');
+        indicator.classList.add('blue');
       }
 
       Object.keys(panels).forEach(key => {
@@ -1067,7 +1044,7 @@
     window.addEventListener('load', function() {
       const activeTab = document.querySelector('.tab-btn.active');
       if (activeTab) {
-        indicator.classList.remove('orange', 'green', 'purple');
+        indicator.classList.remove('orange', 'green', 'blue');
         updateIndicator(activeTab);
       }
     });
@@ -1081,6 +1058,7 @@
       }, 100);
     });
 
+    // ---- COURSE DATA ----
     const rawCourses = [
       "Honors U.S. History I 215", "Environmental Science 351", "Piano III 898",
       "Honors Pre-Calc 424", "Radio Communications I 984", "Honors English II 125",
