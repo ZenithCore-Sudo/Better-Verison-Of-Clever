@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raider Portal · animated tabs</title>
-  <!-- Font Awesome 6 -->
+  <title>Raider Portal · Animated Tabs</title>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     * {
@@ -29,7 +29,6 @@
       width: 100%;
     }
 
-    /* header */
     .portal-header {
       display: flex;
       justify-content: space-between;
@@ -69,7 +68,6 @@
       letter-spacing: 0.3px;
     }
 
-    /* ---------- TAB BAR WITH ANIMATED INDICATOR ---------- */
     .tab-bar-wrapper {
       position: relative;
       margin-bottom: 2rem;
@@ -126,7 +124,6 @@
       color: #b0b0ff;
     }
 
-    /* sliding indicator */
     .tab-indicator {
       position: absolute;
       bottom: -1px;
@@ -155,7 +152,6 @@
       box-shadow: 0 0 20px rgba(160, 80, 255, 0.2);
     }
 
-    /* panels */
     .panel {
       display: none;
       animation: fade 0.3s ease;
@@ -170,7 +166,6 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* ---------- SCHOOL INFO PANEL ---------- */
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -244,7 +239,6 @@
       border-bottom: 1px solid #6a6aff;
     }
 
-    /* term table */
     .term-table {
       width: 100%;
       border-collapse: collapse;
@@ -280,7 +274,6 @@
       border: 1px solid #2f2f5a;
     }
 
-    /* app grid */
     .app-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -357,8 +350,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
-    /* ========== COURSE CATALOG PANEL ========== */
+    
     .course-catalog {
       background: #121212;
       border: 1px solid #282828;
@@ -485,7 +477,6 @@
       background: #1a1a2a;
     }
 
-    /* pagination arrows */
     .pagination {
       display: flex;
       justify-content: center;
@@ -549,7 +540,6 @@
       font-weight: 500;
     }
 
-    /* ========== COUNSELING PANEL ========== */
     .counseling-panel {
       background: #121212;
       border: 1px solid #282828;
@@ -725,7 +715,6 @@
 <body>
 <div class="portal-wrapper">
 
-  <!-- header -->
   <header class="portal-header">
     <h1>
       <i class="fas fa-graduation-cap"></i>
@@ -733,23 +722,21 @@
     </h1>
     <div class="sub">
       <i class="fas fa-circle" style="color:#5f5; font-size: 0.5rem; margin-right: 6px;"></i>
-      MAHS · Student Portal
+      Middletown Area High School · Student Portal
     </div>
   </header>
 
-  <!-- TAB BAR with animated indicator -->
   <div class="tab-bar-wrapper">
     <div class="tab-bar" id="tabBar">
       <button class="tab-btn active" data-tab="apps"><i class="fas fa-th"></i> Student Portal</button>
       <button class="tab-btn" data-tab="school"><i class="fas fa-school"></i> School Info</button>
       <button class="tab-btn" data-tab="courses"><i class="fas fa-book-open"></i> Course Catalog</button>
       <button class="tab-btn" data-tab="counseling"><i class="fas fa-hand-holding-heart"></i> Counseling</button>
-      <!-- sliding indicator -->
+
       <div class="tab-indicator" id="tabIndicator"></div>
     </div>
   </div>
 
-  <!-- ===== PANEL 1: APPS ===== -->
   <div id="panel-apps" class="panel active">
     <div class="app-grid">
       <a href="https://middletownsd.instructure.com" target="_blank" rel="noopener" class="app-card">
@@ -910,7 +897,6 @@
     </div>
   </div>
 
-  <!-- ===== PANEL 2: SCHOOL INFO ===== -->
   <div id="panel-school" class="panel">
     <div class="info-grid">
       <div class="info-card">
@@ -949,7 +935,6 @@
     </div>
   </div>
 
-  <!-- ===== PANEL 3: COURSE CATALOG ===== -->
   <div id="panel-courses" class="panel">
     <div class="course-catalog">
       <h2><i class="fas fa-book-open"></i> Course Catalog</h2>
@@ -965,13 +950,12 @@
     </div>
   </div>
 
-  <!-- ===== PANEL 4: COUNSELING ===== -->
   <div id="panel-counseling" class="panel">
     <div class="counseling-panel">
       <h2><i class="fas fa-hand-holding-heart"></i> Counseling Services</h2>
 
       <div class="counseling-grid">
-        <!-- Counselor 1 -->
+        
         <div class="counselor-card">
           <h3><i class="fas fa-user-circle"></i> School Counselor</h3>
           <div class="counselor-name">Mrs. Sarah Johnson</div>
@@ -981,7 +965,6 @@
           <a href="#" class="btn-appt"><i class="fas fa-calendar-plus"></i> Schedule Appointment</a>
         </div>
 
-        <!-- Counselor 2 -->
         <div class="counselor-card">
           <h3><i class="fas fa-user-circle"></i> School Counselor</h3>
           <div class="counselor-name">Mr. Michael Chen</div>
@@ -990,8 +973,7 @@
           <div class="counselor-detail"><i class="fas fa-phone"></i> <a href="tel:7179483333">717-948-3333 ext. 5002</a></div>
           <a href="#" class="btn-appt"><i class="fas fa-calendar-plus"></i> Schedule Appointment</a>
         </div>
-
-        <!-- Counselor 3 -->
+        
         <div class="counselor-card">
           <h3><i class="fas fa-user-circle"></i> Mental Health & Wellness</h3>
           <div class="counselor-name">Dr. Lisa Park</div>
@@ -1002,7 +984,6 @@
         </div>
       </div>
 
-      <!-- Resources -->
       <div class="resources-section">
         <h3><i class="fas fa-link"></i> Quick Resources</h3>
         <a href="https://caresolace.com/site/middletownarea" target="_blank" class="resource-tag"><i class="fas fa-heart"></i> Care Solace</a>
@@ -1013,19 +994,15 @@
     </div>
   </div>
 
-  <!-- footer -->
   <footer class="portal-footer">
     <span><i class="fas fa-mouse-pointer" style="margin-right: 6px;"></i> Click On Any Card · All Your Student tools</span>
   </footer>
 
 </div>
 
-<!-- ============================================================ -->
-<!-- JAVASCRIPT - TAB SWITCHING + COURSE CATALOG                  -->
-<!-- ============================================================ -->
 <script>
   (function() {
-    // ---- TAB LOGIC ----
+    
     const tabs = document.querySelectorAll('.tab-btn');
     const indicator = document.getElementById('tabIndicator');
     const tabBar = document.getElementById('tabBar');
@@ -1057,7 +1034,7 @@
 
       indicator.classList.remove('orange', 'green', 'purple');
       if (tabId === 'apps') {
-        // red (default)
+
       } else if (tabId === 'school') {
         indicator.classList.add('orange');
       } else if (tabId === 'courses') {
@@ -1104,7 +1081,6 @@
       }, 100);
     });
 
-    // ---- COURSE DATA ----
     const rawCourses = [
       "Honors U.S. History I 215", "Environmental Science 351", "Piano III 898",
       "Honors Pre-Calc 424", "Radio Communications I 984", "Honors English II 125",
@@ -1208,7 +1184,6 @@
 
     renderPage(1);
 
-    // ---- EXPOSE SETACTIVETAB ----
     window.setActiveTab = setActiveTab;
 
   })();
